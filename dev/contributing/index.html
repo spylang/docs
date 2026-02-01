@@ -494,11 +494,9 @@
 <p class="admonition-title">Cloning the Repo</p>
 <p>The first two steps below (forking and cloning the repo) are the same as for the steps for contributing to SPy's source code. You do not need a separate fork and clone for documentation.</p>
 </div>
-<ul>
-<li>Fork <a href="https://github.com/spylang/spy">the  SPy repo</a>, go to the project repo page and use the Fork button. This will create a copy of the repo, under your username (e.,g. <code>https://github.com/yourghname/spy</code>). (For more details on how to fork a repository see <a href="https://help.github.com/articles/fork-a-repo/">this guide</a>.</li>
-</ul>
+<p>First, fork <a href="https://github.com/spylang/spy">the  SPy repo</a>, go to the project repo page and use the Fork button. This will create a copy of the repo, under your username (e.,g. <code>https://github.com/yourghname/spy</code>). (For more details on how to fork a repository see <a href="https://help.github.com/articles/fork-a-repo/">this guide</a>.</p>
 <p>Next, clone the repo to your machine:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:your-user-name/spy.git
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:your-user-name/spy.git
 <span class="nb">cd</span><span class="w"> </span>spy
 </code></pre></div>
 <p>Create a virtual environment for your project, and install both the SPy dependencies and the docs-specific dependencies. Any package installer and virtual environment will work; here are a couple of options:</p>
@@ -534,7 +532,7 @@ mkdocs<span class="w"> </span>serve
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Updating Docs</p>
-<p>Some changes - like adding or moving files, or changes to configuration in <code>mkdocs.yml</code>, will not be visible immediately in the server preview. To see them, stop the server (ctl/cmd + c), rerun the build command, and restart the live server using the commands above.</p>
+<p>Some changes - like adding or moving files, or changes to configuration in <code>mkdocs.yml</code>, will not be visible immediately in the server preview. To see them, stop the server (ctl/cmd + c) and restart the live server using the commands above.</p>
 </div>
 <p>Create a new git branch to make changes on:</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/your-change
