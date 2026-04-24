@@ -9,26 +9,28 @@
       
       
       
+        <link rel="prev" href="../../contributing/">
       
-        <link rel="next" href="contributing/">
+      
+        <link rel="next" href="../../api_reference/python_builtins/">
       
       
         
       
       
-      <link rel="icon" href="assets/logo.svg">
+      <link rel="icon" href="../../assets/logo.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>SPy</title>
+        <title>The Main Function - SPy</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -47,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -72,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#home" class="md-skip">
+        <a href="#return-codes" class="md-skip">
           Skip to content
         </a>
       
@@ -92,9 +94,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="SPy" class="md-header__button md-logo" aria-label="SPy" data-md-component="logo">
+    <a href="../.." title="SPy" class="md-header__button md-logo" aria-label="SPy" data-md-component="logo">
       
-  <img src="assets/logo.svg" alt="logo">
+  <img src="../../assets/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              The Main Function
             
           </span>
         </div>
@@ -229,9 +231,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="SPy" class="md-nav__button md-logo" aria-label="SPy" data-md-component="logo">
+    <a href="../.." title="SPy" class="md-nav__button md-logo" aria-label="SPy" data-md-component="logo">
       
-  <img src="assets/logo.svg" alt="logo">
+  <img src="../../assets/logo.svg" alt="logo">
 
     </a>
     SPy
@@ -255,37 +257,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -301,37 +276,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-spy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What is SPy?
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -343,7 +287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="contributing/" class="md-nav__link">
+      <a href="../../contributing/" class="md-nav__link">
         
   
   
@@ -367,8 +311,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -379,13 +325,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -406,7 +350,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -421,10 +365,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="howto/main_function/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Main Function
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -440,6 +409,85 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#return-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Return Codes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retcodespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        retcode.spy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="retcode.spy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-command-line-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Command Line Arguments
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argsspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        args.spy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argnamespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        argname.spy
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -513,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api_reference/python_builtins/" class="md-nav__link">
+      <a href="../../api_reference/python_builtins/" class="md-nav__link">
         
   
   
@@ -602,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="llmem/" class="md-nav__link">
+      <a href="../../llmem/" class="md-nav__link">
         
   
   
@@ -647,8 +695,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -657,10 +703,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-spy" class="md-nav__link">
+  <a href="#return-codes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is SPy?
+        Return Codes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retcodespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        retcode.spy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="retcode.spy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-command-line-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing Command Line Arguments
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argsspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        args.spy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argnamespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        argname.spy
       
     </span>
   </a>
@@ -687,49 +783,52 @@
   
 
 
-<h1 id="home"><img src="assets/logo.svg" width="60" style="vertical-align: middle;"> Home<a class="headerlink" href="#home" title="Permanent link">&para;</a></h1>
-<h2 id="what-is-spy">What is SPy?<a class="headerlink" href="#what-is-spy" title="Permanent link">&para;</a></h2>
-<p>TL;DR: SPy is a variant of Python specifically designed to be
-statically compilable <strong>while</strong> retaining a lot of the "useful" dynamic parts
-of Python.</p>
-<p>It consists of:</p>
-<ol>
-<li>
-<p>an interpreter (so that you can have the usual nice "development
-     experience" that you have in Python)</p>
-</li>
-<li>
-<p>a compiler (for speed)</p>
-</li>
-</ol>
-<p>The documentation is very scarce at the moment, but the best source to
-understand the ideas behind SPy are:</p>
-<ul>
-<li>
-<p>blog post <a href="https://antocuni.eu/2025/10/29/inside-spy-part-1-motivations-and-goals/">Inside SPy, part 1: Motivations and Goals</a></p>
-</li>
-<li>
-<p>PyCon Italy 2025 talk: <a href="https://antocuni.eu/talk/2025/05/spy-pycon-italy/">slides</a> and <a href="https://youtu.be/W-8tgZDgYmw">recording</a>.</p>
-</li>
-<li>
-<p>PyCon US 2024 talk: <a href="https://antocuni.pyscriptapps.com/spy-pycon-2024/latest/">slides</a> and <a href="https://www.youtube.com/watch?v=hnQ0oJ_yXlw&amp;ab_channel=PyConUS">recording</a>.</p>
-</li>
-</ul>
-<p>Additional info can be found on:</p>
-<ul>
-<li>Antonio Cuni's <a href="http://antocuni.eu/tags/#tag:spy">blog</a></li>
-<li><a href="https://lukasz.langa.pl/f37aa97a-9ea3-4aeb-b6a0-9daeea5a7505/">A peek into a possible future of Python in the browser</a> by Łukasz Langa.</li>
-</ul>
 <hr />
-<p>This documentation is currently being written. Contributions are welcome!</p>
-<p><strong>Source Code</strong>: <a href="https://github.com/spylang/spy">https://github.com/spylang/spy</a></p>
-<!-- Testing deployment workflow -->
+<p>All SPy programs that are run in the interpreter or compiled must have a <code>main</code> function. The main function is the entry point of the program, and it is where the execution of the program begins.</p>
+<p><code>py
+def main() -&gt; None:
+    print("Hello world")</code></p>
+<p>Not every <code>.spy</code> module needs a main function, but the module invoked by, e.g. <code>spy foo.spy</code> <code>spy build foo.spy</code> must contain a main function.</p>
+<p>Modules which are compiled as a library (e.g. <code>spy build --target lib foo.spy</code> or <code>--target py-cffi</code>) do not need a main function.</p>
+<h2 id="return-codes">Return Codes<a class="headerlink" href="#return-codes" title="Permanent link">&para;</a></h2>
+<p>The <code>main</code> function may be typed to return an <code>int</code> (<code>i32</code>). If so, the return value of the main function will be the return value of the program:</p>
+<p>```py</p>
+<h1 id="retcodespy">retcode.spy<a class="headerlink" href="#retcodespy" title="Permanent link">&para;</a></h1>
+<p>def main() -&gt; int
+    return 123
+<code></code>
+$ uv run spy retcode.spy
+$ echo $?
+123
+```</p>
+<h2 id="accessing-command-line-arguments">Accessing Command Line Arguments<a class="headerlink" href="#accessing-command-line-arguments" title="Permanent link">&para;</a></h2>
+<p>If the <code>main</code> function accepts a list of strings as an argument, the SPy program will accept arguments from the command line, both when running in interpreted</p>
+<p>```py</p>
+<h1 id="argsspy">args.spy<a class="headerlink" href="#argsspy" title="Permanent link">&para;</a></h1>
+<p>def main(args: list[str]) -&gt; None:
+    print(args[1])
+<code></code>
+$ uv run spy args.spy 999
+999
+```</p>
+<p>As with CPython, args[0] is the name of the string passed to the uv runtime. This is the equivalent of CPython's <code>sys.argv</code>:</p>
+<p>```py</p>
+<h1 id="argnamespy">argname.spy<a class="headerlink" href="#argnamespy" title="Permanent link">&para;</a></h1>
+<p>def main(argv: list[str]) -&gt; None:
+    print(args[0])
+<code></code>
+$ uv run spy argname.spy
+foo.spy
+```</p>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -792,10 +891,10 @@ understand the ideas behind SPy are:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>
