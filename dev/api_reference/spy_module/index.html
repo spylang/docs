@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../contributing/">
+        <link rel="prev" href="../spy_builtins/">
       
       
-        <link rel="next" href="../../api_reference/python_builtins/">
+        <link rel="next" href="../../llmem/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>The Main Function - SPy</title>
+        <title>The __spy__ Module - SPy</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#return-codes" class="md-skip">
+        <a href="#markdown" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              The Main Function
+              The __spy__ Module
             
           </span>
         </div>
@@ -311,8 +311,6 @@
       
   
   
-    
-  
   
   
     
@@ -325,11 +323,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -350,7 +350,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -365,35 +365,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The Main Function
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../howto/main_function/" class="md-nav__link">
         
   
   
@@ -409,46 +384,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#return-codes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Return Codes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-command-line-arguments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accessing Command Line Arguments
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -465,8 +400,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -477,13 +414,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -504,7 +439,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -522,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api_reference/python_builtins/" class="md-nav__link">
+      <a href="../python_builtins/" class="md-nav__link">
         
   
   
@@ -550,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api_reference/spy_builtins/" class="md-nav__link">
+      <a href="../spy_builtins/" class="md-nav__link">
         
   
   
@@ -575,10 +510,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../api_reference/spy_module/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The __spy__ Module
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -594,6 +554,101 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Color()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        as_red()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STATIC_TYPE()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_compiled()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        interp_list
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        interp_dict
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        interp_tuple
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -720,10 +775,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#return-codes" class="md-nav__link">
+  <a href="#markdown" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Return Codes
+        Color()
       
     </span>
   </a>
@@ -731,10 +786,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-command-line-arguments" class="md-nav__link">
+  <a href="#markdown" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accessing Command Line Arguments
+        as_red()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STATIC_TYPE()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_compiled()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        interp_list
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        interp_dict
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        interp_tuple
       
     </span>
   </a>
@@ -761,42 +871,48 @@
   
 
 
-  <h1>The Main Function</h1>
+  <h1>The __spy__ Module</h1>
 
 <hr />
-<p>All SPy programs that are run in the interpreter or compiled must have a <code>main</code> function. The main function is the entry point of the program, and it is where the execution of the program begins.</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
-</span></code></pre></div>
-<p>Not every <code>.spy</code> module needs a main function, but the module invoked by, e.g. <code>spy foo.spy</code> <code>spy build foo.spy</code> must contain a main function.</p>
-<p>Modules which are compiled as a library (e.g. <code>spy build --target lib foo.spy</code> or <code>--target py-cffi</code>) do not need a main function.</p>
-<h2 id="return-codes">Return Codes<a class="headerlink" href="#return-codes" title="Permanent link">&para;</a></h2>
-<p>The <code>main</code> function may be typed to return an <code>int</code> (<code>i32</code>). If so, the return value of the main function will be the return value of the program:</p>
-<p><div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">#retcode.spy</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">return</span> <span class="mi">123</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ uv run spy retcode.spy
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$ echo $?
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>123
-</span></code></pre></div></p>
-<h2 id="accessing-command-line-arguments">Accessing Command Line Arguments<a class="headerlink" href="#accessing-command-line-arguments" title="Permanent link">&para;</a></h2>
-<p>If the <code>main</code> function accepts a list of strings as an argument, the SPy program will accept arguments from the command line, both when running in interpreted</p>
-<p><div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">#args.spy</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$ uv run spy args.spy 999
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>999
-</span></code></pre></div></p>
-<p>As with CPython, args[0] is the name of the string passed to the uv runtime. This is the equivalent of CPython's <code>sys.argv</code>:</p>
-<p><div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">#argname.spy</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$ uv run spy argname.spy
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>foo.spy
-</span></code></pre></div></p>
+<style> {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+</style>
+
+<p>The <code>__spy__</code> module provides functions for introspecting and manipulating SPy objects' at colors and types at runtime. It also contains some objects - <code>interp_list</code>, <code>interp_dict</code>, and <code>interp_tuple</code> -  that act as fallback implementations for those data structures that only function within the interpreter.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The contents of the <code>__spy__</code> module and SPy's builtins form the API surface of a language that's rapidly evolving. All of the constructs, names, functions, or decorators here are likely to change!</p>
+</div>
+<h3 id="markdown"><strong>COLOR</strong>(expr) -&gt; Literal["red", "blue"]<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<dl>
+<dd>Returns the current color of the passed expression. Mainly useful in tests, but may be useful to give users a view into the color of expressions during development.</dd>
+</dl>
+<h3 id="markdown"><strong>as_red</strong>(object) -&gt; Literal["red", "blue"]<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<dl>
+<dd>If <code>object</code> is a reference type (e.g. strings, int, etc.), <code>as_red</code> simply changes the passed object's color to red. If <code>object</code> is a value type, returns a copy of the object as a red object. </dd>
+<dd>May be useful during metaprograming ensure that blue objects which are equal do not get optimized into the same object at redshift time. See, for example, the <a href="https://github.com/spylang/spy/blob/main/spy/vm/astframe.py#L1161">implementation of <code>exal_expr_List</code></a>.</dd>
+</dl>
+<h3 id="markdown"><strong>STATIC_TYPE</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<dl>
+<dd>Returns the type of the expression determined in a static context. Useful in tests, and is used in some of SPy's internal machinery.</dd>
+</dl>
+<h3 id="markdown"><strong>is_compiled</strong>()<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<dl>
+<dd>Returns <code>False</code> when run in the interpreter, with or without redshifting. Returns <code>True</code> in compiled C code. Useful for testing and benchmarks, where it may be useful to adjust parameters depending on whether the code is compiled or not.</dd>
+</dl>
+<h3 id="markdown"><strong>interp_list</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<dl>
+<dd>A <code>list</code> object that functions only within the interpreter, and is not supported by the C backend. Highly likely to be removed in the future, but currently useful for prototyping internal to SPy for object types that cannot currently be held in 'real' lists, like types, <code>object()</code>s, and dynamic objects.</dd>
+</dl>
+<h3 id="markdown"><strong>interp_dict</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<dl>
+<dd>A <code>dict</code> object that functions only within the interpreter, and is not supported by the C backend. Highly likely to be removed in the future, but currently useful for prototyping internal to SPy to support key types that cannot currently be keys of 'real' dicts, like union types.</dd>
+</dl>
+<h3 id="markdown"><strong>interp_tuple</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<dl>
+<dd>A <code>tuple</code> object that functions only within the interpreter, and is not supported by the C backend. Highly likely to be removed in the future, but solves some bootstrapping issues related to other types and operations implemented in SPy.</dd>
+</dl>
 
 
 

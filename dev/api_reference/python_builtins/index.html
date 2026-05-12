@@ -12,7 +12,7 @@
         <link rel="prev" href="../../howto/main_function/">
       
       
-        <link rel="next" href="../../llmem/">
+        <link rel="next" href="../spy_builtins/">
       
       
         
@@ -679,7 +679,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#printobj" class="md-nav__link">
+  <a href="#printobjects" class="md-nav__link">
     <span class="md-ellipsis">
       
         print()
@@ -858,6 +858,62 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spy_builtins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPy Builtins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spy_module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The __spy__ Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1150,7 +1206,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#printobj" class="md-nav__link">
+  <a href="#printobjects" class="md-nav__link">
     <span class="md-ellipsis">
       
         print()
@@ -1418,9 +1474,9 @@ h3 {
 <dl>
 <dd><code>object</code> is implemented as a type, and can be used as a parameter or return type. "Plain" objects (i.e. <code>x = object()</code>) are not supported.</dd>
 </dl>
-<h3 id="printobj"><strong>print</strong>(obj)<a class="headerlink" href="#printobj" title="Permanent link">&para;</a></h3>
+<h3 id="printobjects"><strong>print</strong>(*objects)<a class="headerlink" href="#printobjects" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>The print function is currently not variadic, in the sense that it only accepts a single argument. The built-in types are special-cased, and SPy can always print blue objects by pre-computing their string representation</dd>
+<dd>Prints objects to standard out, utilizing the objects <code>__str__</code> method if necessary. Extra keyworld arguments a la <a href="https://docs.python.org/3/library/functions.html#print">CPythons' print()</a> are not currently supported.</dd>
 </dl>
 <h3 id="rangestop"><strong>range</strong>(stop)<a class="headerlink" href="#rangestop" title="Permanent link">&para;</a></h3>
 <dl>
