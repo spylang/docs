@@ -885,7 +885,7 @@
 <h3 id="blue"><strong>@blue</strong><a class="headerlink" href="#blue" title="Permanent link">&para;</a></h3>
 <dl>
 <dd>Declares that a function should be executed at <a href="https://antocuni.eu/2025/10/29/inside-spy-part-1-motivations-and-goals/#redshifting">redshift time</a>; that is, at the point when method and function lookups are resolved, and prior to compilation to C or WASM, if any.</dd>
-<dd><code>@blue</code> decorated functions are not required to specify types for their parameters, nor are they required to specify return types.</dd>
+<dd>type annotations for <code>@blue</code> functions are optional. If omitted, the arguments and return types default to <code>dynamic</code>.</dd>
 <dd>In this example, the two blue functions are evaluated during redshift time, and the emitted C code is just a print statement of a constant number.</dd>
 </dl>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@blue</span>
@@ -906,8 +906,7 @@
 </span></code></pre></div>
 <h3 id="bluegeneric"><strong>@blue.generic</strong><a class="headerlink" href="#bluegeneric" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Denotes that the decorated function accepts a type as its first argument. Generic functions should return a function object.</dd>
-<dd>Generic functions are called using the spy-specific syntax <code>func[type](args)</code>.</dd>
+<dd>Functions decorated with <code>@blue.generic</code> are called using square brackets <code>[]</code> instead of parentheses <code>()</code>. Other than that, they are identical to other blue functions. While they may be used anywhere, the primary purposes is to allow the creation of functions that look like <a href="https://peps.python.org/pep-0695/">PEP 695</a> functions with type parameters:</dd>
 </dl>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>  <span class="nd">@blue</span><span class="o">.</span><span class="n">generic</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
