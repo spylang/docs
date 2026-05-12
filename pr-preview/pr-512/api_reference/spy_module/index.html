@@ -862,17 +862,18 @@
 <p class="admonition-title">Warning</p>
 <p>The contents of the <code>__spy__</code> module and SPy's builtins form the API surface of a language that's rapidly evolving. All of the constructs, names, functions, or decorators here are likely to change!</p>
 </div>
-<h3 id="markdown"><strong>COLOR</strong>(object) -&gt; Literal["red", "blue"]<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<h3 id="markdown"><strong>COLOR</strong>(expr) -&gt; Literal["red", "blue"]<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Returns the current color of the passed object. Mainly useful in tests, but may be useful to give users a view into the color of objects during development.</dd>
+<dd>Returns the current color of the passed expression. Mainly useful in tests, but may be useful to give users a view into the color of expressions during development.</dd>
 </dl>
 <h3 id="markdown"><strong>as_red</strong>(object) -&gt; Literal["red", "blue"]<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Returns a copy of the object as a red object. May be useful during metaprograming ensure that blue objects which are equal do not get optimized into the same object at redshift time. See, for example, the <a href="https://github.com/spylang/spy/blob/main/spy/vm/astframe.py#L1161">implementation of <code>exal_expr_List</code></a>.</dd>
+<dd>If <code>object</code> is a reference type (e.g. strings, int, etc.), <code>as_red</code> simply changes the passed object's color to red. If <code>object</code> is a value type, returns a copy of the object as a red object. </dd>
+<dd>May be useful during metaprograming ensure that blue objects which are equal do not get optimized into the same object at redshift time. See, for example, the <a href="https://github.com/spylang/spy/blob/main/spy/vm/astframe.py#L1161">implementation of <code>exal_expr_List</code></a>.</dd>
 </dl>
 <h3 id="markdown"><strong>STATIC_TYPE</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Returns the type of the object determined in a static context. Useful in tests, and is used in some of SPy's internal machinery.</dd>
+<dd>Returns the type of the expression determined in a static context. Useful in tests, and is used in some of SPy's internal machinery.</dd>
 </dl>
 <h3 id="markdown"><strong>interp_list</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
 <dl>
