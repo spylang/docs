@@ -594,7 +594,18 @@
   <a href="#markdown" class="md-nav__link">
     <span class="md-ellipsis">
       
-        __STATIC_TYPE__()
+        STATIC_TYPE()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_compiled()
       
     </span>
   </a>
@@ -789,7 +800,18 @@
   <a href="#markdown" class="md-nav__link">
     <span class="md-ellipsis">
       
-        __STATIC_TYPE__()
+        STATIC_TYPE()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_compiled()
       
     </span>
   </a>
@@ -874,6 +896,10 @@
 <h3 id="markdown"><strong>STATIC_TYPE</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
 <dl>
 <dd>Returns the type of the expression determined in a static context. Useful in tests, and is used in some of SPy's internal machinery.</dd>
+</dl>
+<h3 id="markdown"><strong>is_compiled</strong>()<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<dl>
+<dd>Returns <code>False</code> when run in the interpreter, with or without redshifting. Returns <code>True</code> in compiled C code. Useful for testing and benchmarks, where it may be useful to adjust parameters depending on whether the code is compiled or not.</dd>
 </dl>
 <h3 id="markdown"><strong>interp_list</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
 <dl>
