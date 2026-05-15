@@ -901,15 +901,15 @@
 <dl>
 <dd>Returns <code>False</code> when run in the interpreter, with or without redshifting. Returns <code>True</code> in compiled C code. Useful for testing and benchmarks, where it may be useful to adjust parameters depending on whether the code is compiled or not.</dd>
 </dl>
-<h3 id="markdown"><strong>interp_list</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<h3 id="markdown"><strong>interp_list</strong>[type]<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
 <dl>
 <dd>A <code>list</code> object that functions only within the interpreter, and is not supported by the C backend. Highly likely to be removed in the future, but currently useful for prototyping internal to SPy for object types that cannot currently be held in 'real' lists, like types, <code>object()</code>s, and dynamic objects.</dd>
 </dl>
-<h3 id="markdown"><strong>interp_dict</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<h3 id="markdown"><strong>interp_dict</strong>[key_type, value_type]<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
 <dl>
 <dd>A <code>dict</code> object that functions only within the interpreter, and is not supported by the C backend. Highly likely to be removed in the future, but currently useful for prototyping internal to SPy to support key types that cannot currently be keys of 'real' dicts, like union types.</dd>
 </dl>
-<h3 id="markdown"><strong>interp_tuple</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
+<h3 id="markdown"><strong>interp_tuple</strong>[type]<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
 <dl>
 <dd>A <code>tuple</code> object that functions only within the interpreter, and is not supported by the C backend. Highly likely to be removed in the future, but solves some bootstrapping issues related to other types and operations implemented in SPy.</dd>
 </dl>
