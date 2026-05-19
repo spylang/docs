@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../contributing/">
+        <link rel="prev" href="../main_function/">
       
       
-        <link rel="next" href="../generics/">
+        <link rel="next" href="../../api_reference/python_builtins/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>The Main Function - SPy</title>
+        <title>Generic Functions and Types - SPy</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#return-codes" class="md-skip">
+        <a href="#generic-functions" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              The Main Function
+              Generic Functions and Types
             
           </span>
         </div>
@@ -365,6 +365,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../main_function/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Main Function
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -382,7 +410,7 @@
   <span class="md-ellipsis">
     
   
-    The Main Function
+    Generic Functions and Types
   
 
     
@@ -400,7 +428,7 @@
   <span class="md-ellipsis">
     
   
-    The Main Function
+    Generic Functions and Types
   
 
     
@@ -424,10 +452,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#return-codes" class="md-nav__link">
+  <a href="#generic-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Return Codes
+        Generic Functions
       
     </span>
   </a>
@@ -435,10 +463,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-command-line-arguments" class="md-nav__link">
+  <a href="#generic-class-syntax" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accessing Command Line Arguments
+        Generic Class Syntax
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__origin__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __origin__
       
     </span>
   </a>
@@ -449,34 +488,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../generics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Generic Functions and Types
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -748,10 +759,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#return-codes" class="md-nav__link">
+  <a href="#generic-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Return Codes
+        Generic Functions
       
     </span>
   </a>
@@ -759,10 +770,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-command-line-arguments" class="md-nav__link">
+  <a href="#generic-class-syntax" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accessing Command Line Arguments
+        Generic Class Syntax
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__origin__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __origin__
       
     </span>
   </a>
@@ -789,42 +811,104 @@
   
 
 
-  <h1>The Main Function</h1>
+  <h1>Generic Functions and Types</h1>
 
 <hr />
-<p>All SPy programs that are run in the interpreter or compiled must have a <code>main</code> function. The main function is the entry point of the program, and it is where the execution of the program begins.</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
+<!-- See https://github.com/spylang/spy/pull/519 and https://github.com/spylang/spy/pull/448-->
+
+<h3 id="generic-functions">Generic Functions<a class="headerlink" href="#generic-functions" title="Permanent link">&para;</a></h3>
+<p>Functions decorated with <a href="../../api_reference/spy_builtins/#bluegeneric">@blue.generic</a> are called with <code>[]</code> brackets instead of parentheses. These <em>may</em> be used anywhere, but they are intended to help create functions that look like <a href="https://peps.python.org/pep-0695/">PEP 695</a> functions with type parameters:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@blue</span><span class="o">.</span><span class="n">generic</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">impl</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="n">T</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="k">return</span> <span class="n">impl</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">[</span><span class="n">i32</span><span class="p">](</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">[</span><span class="nb">str</span><span class="p">](</span><span class="s1">&#39;hello &#39;</span><span class="p">,</span> <span class="s1">&#39;world&#39;</span><span class="p">))</span>
 </span></code></pre></div>
-<p>Not every <code>.spy</code> module needs a main function, but the module invoked by, e.g. <code>spy foo.spy</code> <code>spy build foo.spy</code> must contain a main function.</p>
-<p>Modules which are compiled as a library (e.g. <code>spy build --target lib foo.spy</code> or <code>--target py-cffi</code>) do not need a main function.</p>
-<h2 id="return-codes">Return Codes<a class="headerlink" href="#return-codes" title="Permanent link">&para;</a></h2>
-<p>The <code>main</code> function may be typed to return an <code>int</code> (<code>i32</code>). If so, the return value of the main function will be the return value of the program:</p>
-<p><div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">#retcode.spy</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">return</span> <span class="mi">123</span>
+<p>Like all functions marked <code>@blue</code>, the generic function is guaranteed to be executed at compile-time. We can see in the redshifted version of the above code that <code>add()</code> no longer appears, but the two specialized versions of it remain:</p>
+<!-- Colorful code formatted by ansi2html -->
+<style type="text/css">
+.ansi2html-content { display: block; white-space: pre-wrap; word-wrap: break-word; font-size: .85em; padding:1.1em; corner-radius: 0.1em}
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi34 { color: #0000aa; }
+.ansi35 { color: #E850A8; }
+</style>
+<div class="body_background" style="background-color:rgb(245, 245, 245);">
+<pre class="ansi2html-content">
+<span class="ansi34">def</span> main() -&gt; <span class="ansi34">None</span>:
+    <span class="ansi35">`_print::println[i32]::p`</span>(<span class="ansi35">`t::add[i32]::impl`</span>(<span class="ansi33">1</span>, <span class="ansi33">2</span>))
+    <span class="ansi35">`_print::println[str]::p`</span>(<span class="ansi35">`t::add[str]::impl`</span>(<span class="ansi32">'hello '</span>, <span class="ansi32">'world'</span>))
+
+<span class="ansi34">def</span> <span class="ansi35">`t::add[i32]::impl`</span>(x: <span class="ansi35">i32</span>, y: <span class="ansi35">i32</span>) -&gt; <span class="ansi35">i32</span>:
+    <span class="ansi34">return</span> x + y
+
+<span class="ansi34">def</span> <span class="ansi35">`t::add[str]::impl`</span>(x: <span class="ansi35">str</span>, y: <span class="ansi35">str</span>) -&gt; <span class="ansi35">str</span>:
+    <span class="ansi34">return</span> <span class="ansi35">`operator::str_add`</span>(x, y)
+</pre>
+</div>
+
+<h3 id="generic-class-syntax">Generic Class Syntax<a class="headerlink" href="#generic-class-syntax" title="Permanent link">&para;</a></h3>
+<p><code>@struct</code> classes may also be created with one or more parameters in <code>[]</code> brackets. This is different from passing superclasses inside of <code>()</code> parentheses; rather, this is syntactic sugar for a generic function with an inner <code>@struct</code> class than can make use of those parameters:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@struct</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyList</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">inner</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">other_param_1</span><span class="p">:</span> <span class="o">...</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">other_param_2</span><span class="p">:</span> <span class="o">...</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># ↑ is syntactic sugar for ↓</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nd">@blue</span><span class="o">.</span><span class="n">generic</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">MyList</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="nd">@struct</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="k">class</span><span class="w"> </span><span class="nc">Self</span><span class="p">:</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        <span class="n">inner</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        <span class="n">other_param_1</span><span class="p">:</span> <span class="o">...</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>        <span class="n">other_param_2</span><span class="p">:</span> <span class="o">...</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="k">return</span> <span class="n">Self</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ uv run spy retcode.spy
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$ echo $?
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>123
-</span></code></pre></div></p>
-<h2 id="accessing-command-line-arguments">Accessing Command Line Arguments<a class="headerlink" href="#accessing-command-line-arguments" title="Permanent link">&para;</a></h2>
-<p>If the <code>main</code> function accepts a list of strings as an argument, the SPy program will accept arguments from the command line, both when running in interpreted</p>
-<p><div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">#args.spy</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<p>In use, this looks like:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nd">@struct</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyNamedList</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">my_int_list</span> <span class="o">=</span> <span class="n">MyNamedList</span><span class="p">[</span><span class="n">i32</span><span class="p">](</span><span class="s2">&quot;profits&quot;</span><span class="p">,</span> <span class="p">[])</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">my_int_list</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">my_str_list</span> <span class="o">=</span> <span class="n">MyNamedList</span><span class="p">[</span><span class="nb">str</span><span class="p">](</span><span class="s2">&quot;words&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">])</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">my_str_list</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="s2">&quot;goodbye&quot;</span><span class="p">])</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$ uv run spy args.spy 999
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>999
-</span></code></pre></div></p>
-<p>As with CPython, args[0] is the name of the string passed to the uv runtime. This is the equivalent of CPython's <code>sys.argv</code>:</p>
-<p><div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">#argname.spy</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<p>For a larger example, see the <code>myarray</code> example <a href="https://github.com/spylang/spy/blob/main/examples/myarray.spy">on GitHub</a> or <a href="https://spylang.github.io/spy/#code=eJydVcFO40AMvecrrHBpdiGiwHKoFsRKcOCCkOCyQlVkEqed3XQmmplQytevJ5OmkzZIK6oeEnv8bL9nT-I4jp6XwgD_lSRQJdglwUoZC1i8ocypAHrHVV2Rcd6nxw0YBSXqNIruLQjnWZG0pg18RSPy9iDCgiRpkQNqjRuwm5qi6EFZ4oNowVjd5JxEE9RoDKd53cAbVg3nmYiUUshVLahI0ijmIqNSqxU00mBJLqnSFhZ5hlWl8mP3VFsdRdGNh43yijHhl8t8ixZfbp9_P97NZxHwryK5sMsZiPOz9j3HGnNhNzuLsLQysw61i2XweEvWtjOfhQ1_GubLbKTF3LLdNAvUUCqu6OaVO0q7gKigclfUpAVOfFHbwtuCWtgnqkrvGyt6vPDPi3ceTbbRsgUOlXC6SVz14udK5nyUWslcd1itcWMgdoFxJ8cY09NiwPMRo3F0J7TDcQYJH6TVSe4mbK2xrknzEKhGFm3yOMuqKstiqJWQlnQKz2xlWhusoGDWHNCSsD5ppUdLRdpm83F93_vSdxQcgeS-Z4yg6bhlgtvVmkytZMEjrEYYGPaWeiCnZJZJWmfZJNAmgZPrPeWOuO-uGcZfoy78qvi1cC3tRK7gqp_qwxYm0yQ4mvq0HOEfQtd2Mkad7YCEiTx818YuheAzp_3beikqngb4uR3F3hPCvoj5IGqLI-A7THtrMIhplq3wLzkWq2RHrZsLWUwMnzj2t8IM_Lo4gh_4qpoNWTMey83AroEyoOn6KiRmWP0RV2TEB68BUcE30QkUqnmtyA9DFzKIcMKHJAeUf4OzYfvl3mnmZ5h-BHB6kO0z1cLAZK8rvkE3fHsLY4Vc-IvhQJmhVoHKW-bGaw3UDrQ_OHqovVesH8Iea_9AQEbYYnQwyS99pa6YdlbGt6R_duUES7wg64B4BP24id0mtxz_36SJbsLGSNMoDMG9LOj9Tmv-LPQOvwghg0FhZrQw3oev7cKXKhwu9htf_K62FQo52UuPWVkptE7U7Y1ZXl7wpXWadH4hB17uZT65CJ0vp_N-9jvL1FnOQsuZs5yHlnNnuQgsaXd9_EhGjJfeyF9nZoQ_Rxrlgti6I6TWfH7SgYt5Ev0DKx6k_A==">run it in the SPy Playground</a></p>
+<h3 id="__origin__"><code>__origin__</code><a class="headerlink" href="#__origin__" title="Permanent link">&para;</a></h3>
+<p>The <code>__origin__</code> attribute of SPy objects carries information about the generic function which created them, if any. When <code>blue.generic</code> defines a <code>type</code> or <code>function</code> and returns it, the returned object has it's <code>__origin__</code> is set to the generic function:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nd">@blue</span><span class="o">.</span><span class="n">generic</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">adder</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="nd">@struct</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="k">class</span><span class="w"> </span><span class="nc">impl</span><span class="p">:</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>         <span class="o">...</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="k">return</span> <span class="n">impl</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="k">assert</span> <span class="n">adder</span><span class="p">[</span><span class="n">T</span><span class="p">]</span><span class="o">.</span><span class="n">__origin__</span> <span class="ow">is</span> <span class="n">adder</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$ uv run spy argname.spy
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>foo.spy
-</span></code></pre></div></p>
+<p>This is a straightforward way to identify that, for example, <code>MyList[T]</code> is a 'specialised' version of <code>MyList</code> on the type <code>T</code>.</p>
+<p>(The default value for <code>__origin__</code> is <code>None</code>. If the object returned by a generic function already has a non-<code>None</code> origin, that origin will <em>not</em> be overwritten.)</p>
+<p>The <code>__origin__</code> functions identically with the Generic Class syntax described above:</p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nd">@struct</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyList</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">inner</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="k">assert</span> <span class="n">MyList</span><span class="p">[</span><span class="n">i32</span><span class="p">]</span><span class="o">.</span><span class="n">__origin__</span> <span class="ow">is</span> <span class="n">MyList</span>
+</span></code></pre></div>
 
 
 
