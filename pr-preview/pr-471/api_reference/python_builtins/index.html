@@ -674,7 +674,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#maxx-i32-y-i32" class="md-nav__link">
+  <a href="#maxx-y" class="md-nav__link">
     <span class="md-ellipsis">
       
         max()
@@ -685,7 +685,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#minx-i32-y-i32" class="md-nav__link">
+  <a href="#minx-y" class="md-nav__link">
     <span class="md-ellipsis">
       
         min()
@@ -1201,7 +1201,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#maxx-i32-y-i32" class="md-nav__link">
+  <a href="#maxx-y" class="md-nav__link">
     <span class="md-ellipsis">
       
         max()
@@ -1212,7 +1212,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#minx-i32-y-i32" class="md-nav__link">
+  <a href="#minx-y" class="md-nav__link">
     <span class="md-ellipsis">
       
         min()
@@ -1490,13 +1490,15 @@ h3 {
 <dd>The syntax <code>list[type]()</code> can be used to create a new empty list of the given type. The simpler syntax <code>l: list[membertype] = []</code> can also be used. Unlike CPython, this does not (currently) accept an Iterable to create a new list from.</dd>
 <dd>The implementation (in SPy) of <code>list</code> can be <a href="https://github.com/spylang/spy/blob/main/stdlib/_list.spy">viewed here</a>.</dd>
 </dl>
-<h3 id="maxx-i32-y-i32"><strong>max</strong>(x: i32, y: i32)<a class="headerlink" href="#maxx-i32-y-i32" title="Permanent link">&para;</a></h3>
+<h3 id="maxx-y"><strong>max</strong>(x, y)<a class="headerlink" href="#maxx-y" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Currently only implemented for int32's or objects convertible to int32's.</dd>
+<dd>If the arguments have the same type, works if they can be compared.
+Else, currently only implemented for int's and float's.</dd>
 </dl>
-<h3 id="minx-i32-y-i32"><strong>min</strong>(x: i32, y: i32)<a class="headerlink" href="#minx-i32-y-i32" title="Permanent link">&para;</a></h3>
+<h3 id="minx-y"><strong>min</strong>(x, y)<a class="headerlink" href="#minx-y" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Currently only implemented for int32's or objects convertible to int32's.</dd>
+<dd>If the arguments have the same type, works if they can be compared.
+Else, currently only implemented for int's and float's.</dd>
 </dl>
 <h3 id="object"><strong>object</strong><a class="headerlink" href="#object" title="Permanent link">&para;</a></h3>
 <dl>
