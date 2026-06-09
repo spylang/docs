@@ -632,7 +632,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#maxx-i32-y-i32" class="md-nav__link">
+  <a href="#maxx-y" class="md-nav__link">
     <span class="md-ellipsis">
       
         max()
@@ -643,7 +643,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#minx-i32-y-i32" class="md-nav__link">
+  <a href="#minx-y" class="md-nav__link">
     <span class="md-ellipsis">
       
         min()
@@ -1187,7 +1187,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#maxx-i32-y-i32" class="md-nav__link">
+  <a href="#maxx-y" class="md-nav__link">
     <span class="md-ellipsis">
       
         max()
@@ -1198,7 +1198,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#minx-i32-y-i32" class="md-nav__link">
+  <a href="#minx-y" class="md-nav__link">
     <span class="md-ellipsis">
       
         min()
@@ -1428,7 +1428,7 @@ h3 {
 <p>The following built-in functions work similarly to their equivalents in CPython; see the specific functions below for notes</p>
 <h3 id="absobject"><strong>abs</strong>(object)<a class="headerlink" href="#absobject" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Currently only implemented for int32's or objects convertible to int32's. The <code>__abs__</code> attribute is not currently supported.</dd>
+<dd>Works for any type which can be compared (less-than) against <code>0</code> and accepts unary minus <code>-</code> operator. The <code>__abs__</code> attribute is not currently supported.</dd>
 </dl>
 <h3 id="breakpoint"><strong>breakpoint()</strong><a class="headerlink" href="#breakpoint" title="Permanent link">&para;</a></h3>
 <dl>
@@ -1460,7 +1460,7 @@ h3 {
 <h3 id="hashobject"><strong>hash</strong>(object)<a class="headerlink" href="#hashobject" title="Permanent link">&para;</a></h3>
 <dl>
 <dd>Currently implemented for types: <code>i8</code>,<code>i32</code>, <code>u8</code>, <code>bool</code>, <code>str</code>.</dd>
-<dd>By default, instances of SPy structs are not hashable. As a planned future feature, structs will have auto-generated <code>__hash__</code> by default, but this is awaiting implementation. Currently, users can implement the <code>__hash__</code> function to permit hashing. </dd>
+<dd>By default, instances of SPy structs are not hashable. As a planned future feature, structs will have auto-generated <code>__hash__</code> by default, but this is awaiting implementation. Currently, users can implement the <code>__hash__</code> function to permit hashing.</dd>
 </dl>
 <h3 id="intobject"><strong>int</strong>(object)<a class="headerlink" href="#intobject" title="Permanent link">&para;</a></h3>
 <dl>
@@ -1473,16 +1473,18 @@ h3 {
 </dl>
 <h3 id="listtype"><strong>list</strong>[type]()<a class="headerlink" href="#listtype" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>The syntax <code>list[type]()</code> can be used to create a new empty list of the given type. The simpler syntax <code>l: list[membertype] = []</code> can also be used. Unlike CPython, this does not (currently) accept an Iterable to create a new list from. </dd>
+<dd>The syntax <code>list[type]()</code> can be used to create a new empty list of the given type. The simpler syntax <code>l: list[membertype] = []</code> can also be used. Unlike CPython, this does not (currently) accept an Iterable to create a new list from.</dd>
 <dd>The implementation (in SPy) of <code>list</code> can be <a href="https://github.com/spylang/spy/blob/main/stdlib/_list.spy">viewed here</a>.</dd>
 </dl>
-<h3 id="maxx-i32-y-i32"><strong>max</strong>(x: i32, y: i32)<a class="headerlink" href="#maxx-i32-y-i32" title="Permanent link">&para;</a></h3>
+<h3 id="maxx-y"><strong>max</strong>(x, y)<a class="headerlink" href="#maxx-y" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Currently only implemented for int32's or objects convertible to int32's.</dd>
+<dd>If the arguments have the same type, works if they can be compared.
+Else, currently only implemented for int's and float's.</dd>
 </dl>
-<h3 id="minx-i32-y-i32"><strong>min</strong>(x: i32, y: i32)<a class="headerlink" href="#minx-i32-y-i32" title="Permanent link">&para;</a></h3>
+<h3 id="minx-y"><strong>min</strong>(x, y)<a class="headerlink" href="#minx-y" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Currently only implemented for int32's or objects convertible to int32's.</dd>
+<dd>If the arguments have the same type, works if they can be compared.
+Else, currently only implemented for int's and float's.</dd>
 </dl>
 <h3 id="object"><strong>object</strong><a class="headerlink" href="#object" title="Permanent link">&para;</a></h3>
 <dl>
@@ -1523,7 +1525,7 @@ h3 {
 </dl>
 <h3 id="tuple"><strong>tuple</strong>()<a class="headerlink" href="#tuple" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>The syntax <code>tuple[t1, t2, ...](val1, val2 ...)</code> can be used to create a new tuple, with <code>t1</code> as the type of <code>val1</code>, etc. unlike CPython, this does not (currently) accept an Iterable to create a new tuple from. </dd>
+<dd>The syntax <code>tuple[t1, t2, ...](val1, val2 ...)</code> can be used to create a new tuple, with <code>t1</code> as the type of <code>val1</code>, etc. unlike CPython, this does not (currently) accept an Iterable to create a new tuple from.</dd>
 <dd>The implementation (in SPy) of <code>tuple</code> can be <a href="https://github.com/spylang/spy/blob/main/stdlib/_tuple.spy">viewed here</a>.</dd>
 </dl>
 <h3 id="typeobject"><strong>type</strong>(object)<a class="headerlink" href="#typeobject" title="Permanent link">&para;</a></h3>
