@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../howto/generics/">
+        <link rel="prev" href="../python_builtins/">
       
       
-        <link rel="next" href="../spy_builtin_functions/">
+        <link rel="next" href="../builtin_types/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>CPython-Like Builtins - SPy</title>
+        <title>Builtin Functions - SPy</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#implemented-cpython-like-built-ins" class="md-skip">
+        <a href="#class-and-callable-decorators" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CPython-Like Builtins
+              Builtin Functions
             
           </span>
         </div>
@@ -440,6 +440,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_builtins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CPython-Like Builtins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -457,7 +485,7 @@
   <span class="md-ellipsis">
     
   
-    CPython-Like Builtins
+    Builtin Functions
   
 
     
@@ -475,7 +503,7 @@
   <span class="md-ellipsis">
     
   
-    CPython-Like Builtins
+    Builtin Functions
   
 
     
@@ -499,22 +527,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#implemented-cpython-like-built-ins" class="md-nav__link">
+  <a href="#class-and-callable-decorators" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implemented CPython-Like Built-ins
+        Class and Callable Decorators
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Implemented CPython-Like Built-ins">
+    <nav class="md-nav" aria-label="Class and Callable Decorators">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#absobject" class="md-nav__link">
+  <a href="#struct" class="md-nav__link">
     <span class="md-ellipsis">
       
-        abs()
+        @struct
       
     </span>
   </a>
@@ -522,10 +550,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#breakpoint" class="md-nav__link">
+  <a href="#blue" class="md-nav__link">
     <span class="md-ellipsis">
       
-        breakpoint()
+        @blue
       
     </span>
   </a>
@@ -533,10 +561,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dictkeytype-valuetype" class="md-nav__link">
+  <a href="#bluegeneric" class="md-nav__link">
     <span class="md-ellipsis">
       
-        dict()
+        @blue.generic
       
     </span>
   </a>
@@ -544,10 +572,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dirobject" class="md-nav__link">
+  <a href="#bluemetafunc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        dir()
+        @blue.metafunc
       
     </span>
   </a>
@@ -555,280 +583,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#floatobject" class="md-nav__link">
+  <a href="#force_inline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        float()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getattrobj-name-str" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        getattr()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hasattrobj-name-str" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hasattr()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hashobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hash()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#intobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        int()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lenobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        len()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#listtype" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        list()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#maxx-y" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        max()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#minx-y" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        min()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#object" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        object
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#printobjects" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        print()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rangestop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        range()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reprobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        repr()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setattrobject-name-str-value-obj" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        setattr()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#slicestop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        slice()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#strobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        str()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tuple" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        tuple()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#typeobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        type()
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#not-implemented-cpython-built-ins" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Not-Implemented CPython Built-ins
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Not-Implemented CPython Built-ins">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#async" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Async
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iterables-and-iterators" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Iterables and Iterators
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#math" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Math
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-types-introspection-and-metaprogramming" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Function Types, Introspection and Metaprogramming
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-conversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Type Conversion
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#io" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        I/O
+        @force_inline
       
     </span>
   </a>
@@ -844,34 +602,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../spy_builtin_functions/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Builtin Functions
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1227,22 +957,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#implemented-cpython-like-built-ins" class="md-nav__link">
+  <a href="#class-and-callable-decorators" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implemented CPython-Like Built-ins
+        Class and Callable Decorators
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Implemented CPython-Like Built-ins">
+    <nav class="md-nav" aria-label="Class and Callable Decorators">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#absobject" class="md-nav__link">
+  <a href="#struct" class="md-nav__link">
     <span class="md-ellipsis">
       
-        abs()
+        @struct
       
     </span>
   </a>
@@ -1250,10 +980,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#breakpoint" class="md-nav__link">
+  <a href="#blue" class="md-nav__link">
     <span class="md-ellipsis">
       
-        breakpoint()
+        @blue
       
     </span>
   </a>
@@ -1261,10 +991,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dictkeytype-valuetype" class="md-nav__link">
+  <a href="#bluegeneric" class="md-nav__link">
     <span class="md-ellipsis">
       
-        dict()
+        @blue.generic
       
     </span>
   </a>
@@ -1272,10 +1002,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dirobject" class="md-nav__link">
+  <a href="#bluemetafunc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        dir()
+        @blue.metafunc
       
     </span>
   </a>
@@ -1283,280 +1013,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#floatobject" class="md-nav__link">
+  <a href="#force_inline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        float()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getattrobj-name-str" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        getattr()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hasattrobj-name-str" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hasattr()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hashobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hash()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#intobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        int()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lenobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        len()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#listtype" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        list()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#maxx-y" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        max()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#minx-y" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        min()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#object" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        object
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#printobjects" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        print()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rangestop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        range()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reprobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        repr()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setattrobject-name-str-value-obj" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        setattr()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#slicestop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        slice()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#strobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        str()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tuple" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        tuple()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#typeobject" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        type()
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#not-implemented-cpython-built-ins" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Not-Implemented CPython Built-ins
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Not-Implemented CPython Built-ins">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#async" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Async
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iterables-and-iterators" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Iterables and Iterators
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#math" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Math
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-types-introspection-and-metaprogramming" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Function Types, Introspection and Metaprogramming
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-conversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Type Conversion
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#io" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        I/O
+        @force_inline
       
     </span>
   </a>
@@ -1588,169 +1048,107 @@
   
 
 
-  <h1>CPython-Like Builtins</h1>
+  <h1>Builtin Functions</h1>
 
-<hr />
-<style>
-h3 {
+<style> {
   font-family: "Lucida Console", "Courier New", monospace;
 }
 </style>
 
-<h2 id="implemented-cpython-like-built-ins">Implemented CPython-Like Built-ins<a class="headerlink" href="#implemented-cpython-like-built-ins" title="Permanent link">&para;</a></h2>
-<p>The following built-in functions work similarly to their equivalents in CPython; see the specific functions below for notes</p>
-<h3 id="absobject"><strong>abs</strong>(object)<a class="headerlink" href="#absobject" title="Permanent link">&para;</a></h3>
+<p>SPy adds several new builtins to the global namespace. Currently, all of them happen to be decorators for classes or callables.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The contents of the <code>__spy__</code> module and SPy's builtins form the API surface of a language that's rapidly evolving. All of the constructs, names, functions, or decorators here are likely to change!</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For a deeper explanation of the current state of SPy's coloring nomenclature, see <a href="https://antocuni.eu/2026/03/25/inside-spy-part-2-language-semantics/#blue-functions">this post by Antonio Cuni</a>.</p>
+</div>
+<h2 id="class-and-callable-decorators">Class and Callable Decorators<a class="headerlink" href="#class-and-callable-decorators" title="Permanent link">&para;</a></h2>
+<h3 id="struct"><strong>@struct</strong><a class="headerlink" href="#struct" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Works for any type which can be compared (less-than) against <code>0</code> and accepts unary minus <code>-</code> operator. The <code>__abs__</code> attribute is not currently supported.</dd>
+<dd>Used to create a struct from a class definition. See the <a href="../../llmem/#stack-allocated-structs">low level memory section on structs</a> for more details.</dd>
 </dl>
-<h3 id="breakpoint"><strong>breakpoint()</strong><a class="headerlink" href="#breakpoint" title="Permanent link">&para;</a></h3>
+<h3 id="blue"><strong>@blue</strong><a class="headerlink" href="#blue" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Drops the user into an interactive SPy debugging session via <code>spdb</code>, a <code>pdb-like</code> debugging interface for SPy.</dd>
+<dd>Declares that a function should be executed at <a href="https://antocuni.eu/2025/10/29/inside-spy-part-1-motivations-and-goals/#redshifting">redshift time</a>; that is, at the point when method and function lookups are resolved, and prior to compilation to C or WASM, if any.</dd>
+<dd>type annotations for <code>@blue</code> functions are optional. If omitted, the arguments and return types default to <code>dynamic</code>.</dd>
+<dd>In this example, the two blue functions are evaluated during redshift time, and the emitted C code is just a print statement of a constant number.</dd>
 </dl>
-<h3 id="dictkeytype-valuetype"><strong>dict</strong>[keytype, valuetype]()<a class="headerlink" href="#dictkeytype-valuetype" title="Permanent link">&para;</a></h3>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@blue</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="mi">1</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="mi">1</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nd">@blue</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">calc_e</span><span class="p">(</span><span class="n">terms</span><span class="p">):</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="nb">sum</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">terms</span><span class="p">):</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="nb">sum</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="k">return</span> <span class="nb">sum</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">calc_e</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</span></code></pre></div>
+<h3 id="bluegeneric"><strong>@blue.generic</strong><a class="headerlink" href="#bluegeneric" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>In SPy, <code>dict</code> must always be fully typed and used as <code>dict[keytype, valuetype]</code>., The syntax <code>dict[keytype, valuetype]()</code> can be used to create a new empty dict of the given types. The simpler syntax <code>d: dict[keytype, valuetype] = {}</code> can also be used.</dd>
-<dd>Unlike CPython, this does not (currently) accept an Iterable to create a new dict from.</dd>
-<dd>The implementation (in SPy) of <code>dict</code> can be <a href="https://github.com/spylang/spy/blob/main/stdlib/_dict.spy">viewed here</a>.</dd>
+<dd>Functions decorated with <code>@blue.generic</code> are called using square brackets <code>[]</code> instead of parentheses <code>()</code>. Other than that, they are identical to other blue functions. While they may be used anywhere, the primary purposes is to allow the creation of functions that look like <a href="https://peps.python.org/pep-0695/">PEP 695</a> functions with type parameters:</dd>
 </dl>
-<h3 id="dirobject"><strong>dir</strong>(object)<a class="headerlink" href="#dirobject" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>  <span class="nd">@blue</span><span class="o">.</span><span class="n">generic</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>      <span class="k">def</span><span class="w"> </span><span class="nf">impl</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="n">T</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>          <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>      <span class="k">return</span> <span class="n">impl</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>      <span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">[</span><span class="n">i32</span><span class="p">](</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>      <span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">[</span><span class="nb">str</span><span class="p">](</span><span class="s1">&#39;hello &#39;</span><span class="p">,</span> <span class="s1">&#39;world&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<h3 id="bluemetafunc"><strong>@blue.metafunc</strong><a class="headerlink" href="#bluemetafunc" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Returns a list of object’s attributes’ names, the names of its class’s attributes, and recursively of the attributes of its class’s base classes. <code>dir(type)</code> is not currently implemented.</dd>
-<dd>The no-argument form of <code>dir()</code> (i.e. print local variables) is not currently implemented. Custom <code>__dir__</code> methods on objects are not currently supported.</dd>
+<dd>Unlike <code>blue.generic</code> functions, <code>metafunc</code>s accept one or more arguments, and return an <a href="">OpSpec</a> appropriate to those arguments based on their static type.</dd>
 </dl>
-<h3 id="floatobject"><strong>float</strong>(object)<a class="headerlink" href="#floatobject" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>  <span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpSpec</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  <span class="nd">@blue</span><span class="o">.</span><span class="n">metafunc</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  <span class="k">def</span><span class="w"> </span><span class="nf">myprint</span><span class="p">(</span><span class="n">m_x</span><span class="p">):</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>      <span class="k">if</span> <span class="n">m_x</span><span class="o">.</span><span class="n">static_type</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>          <span class="k">def</span><span class="w"> </span><span class="nf">myprint_int</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>              <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>          <span class="k">return</span> <span class="n">OpSpec</span><span class="p">(</span><span class="n">myprint_int</span><span class="p">)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>      <span class="k">if</span> <span class="n">m_x</span><span class="o">.</span><span class="n">static_type</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>          <span class="k">def</span><span class="w"> </span><span class="nf">myprint_str</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>              <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>          <span class="k">return</span> <span class="n">OpSpec</span><span class="p">(</span><span class="n">myprint_str</span><span class="p">)</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;don&#39;t know how to print this&quot;</span><span class="p">)</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>  <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>      <span class="nb">print</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>      <span class="n">myprint</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>      <span class="n">myprint</span><span class="p">(</span><span class="mf">5.2</span><span class="p">)</span>  <span class="c1"># raises TypeError</span>
+</span></code></pre></div>
+<h3 id="force_inline"><strong>@force_inline</strong><a class="headerlink" href="#force_inline" title="Permanent link">&para;</a></h3>
 <dl>
-<dd>Converts <code>object</code> to a float if able. <code>float</code> is an alias for the <code>f64</code> type.</dd>
+<dd>Causes the decorated function to be inlined <strong>during redshifting</strong>. </dd>
+<dd>Only functions with a single return statement at the end of the function can be forced inline. Blue functions cannot be forced inline, nor can forced-inline statements be used recursively.</dd>
 </dl>
-<h3 id="getattrobj-name-str"><strong>getattr</strong>(obj, name: str)<a class="headerlink" href="#getattrobj-name-str" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>Return the value of the named attribute of object. <code>attr</code> must be blue</dd>
-</dl>
-<h3 id="hasattrobj-name-str"><strong>hasattr</strong>(obj, name: str)<a class="headerlink" href="#hasattrobj-name-str" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>Returns <code>True</code> is the object has an attribute called <code>name</code>, or <code>False</code> otherwise. <code>attr</code> must be blue</dd>
-</dl>
-<h3 id="hashobject"><strong>hash</strong>(object)<a class="headerlink" href="#hashobject" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>Currently implemented for types: <code>i8</code>,<code>i32</code>, <code>u8</code>, <code>bool</code>, <code>str</code>.</dd>
-<dd>By default, instances of SPy structs are not hashable. As a planned future feature, structs will have auto-generated <code>__hash__</code> by default, but this is awaiting implementation. Currently, users can implement the <code>__hash__</code> function to permit hashing.</dd>
-</dl>
-<h3 id="intobject"><strong>int</strong>(object)<a class="headerlink" href="#intobject" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>Converts <code>object</code> to an int if able. Works for number types, as well as strings.</dd>
-<dd>The <code>int</code> type is currently an alias to <code>i32</code>. In the future, <code>int</code> will alias preferred individual types for specific platforms, but currently it is always <code>i32</code>.</dd>
-</dl>
-<h3 id="lenobject"><strong>len</strong>(object)<a class="headerlink" href="#lenobject" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>Return the length (the number of items) in a container</dd>
-</dl>
-<h3 id="listtype"><strong>list</strong>[type]()<a class="headerlink" href="#listtype" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>The syntax <code>list[type]()</code> can be used to create a new empty list of the given type. The simpler syntax <code>l: list[membertype] = []</code> can also be used. Unlike CPython, this does not (currently) accept an Iterable to create a new list from.</dd>
-<dd>The implementation (in SPy) of <code>list</code> can be <a href="https://github.com/spylang/spy/blob/main/stdlib/_list.spy">viewed here</a>.</dd>
-</dl>
-<h3 id="maxx-y"><strong>max</strong>(x, y)<a class="headerlink" href="#maxx-y" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>If the arguments have the same type, works if they can be compared.
-Else, currently only implemented for int's and float's.</dd>
-</dl>
-<h3 id="minx-y"><strong>min</strong>(x, y)<a class="headerlink" href="#minx-y" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>If the arguments have the same type, works if they can be compared.
-Else, currently only implemented for int's and float's.</dd>
-</dl>
-<h3 id="object"><strong>object</strong><a class="headerlink" href="#object" title="Permanent link">&para;</a></h3>
-<dl>
-<dd><code>object</code> is implemented as a type, and can be used as a parameter or return type. "Plain" objects (i.e. <code>x = object()</code>) are not supported.</dd>
-</dl>
-<h3 id="printobjects"><strong>print</strong>(*objects)<a class="headerlink" href="#printobjects" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>Prints objects to standard out, utilizing the objects <code>__str__</code> method if necessary. Extra keyworld arguments a la <a href="https://docs.python.org/3/library/functions.html#print">CPythons' print()</a> are not currently supported.</dd>
-</dl>
-<h3 id="rangestop"><strong>range</strong>(stop)<a class="headerlink" href="#rangestop" title="Permanent link">&para;</a></h3>
-<dl>
-<dt><h3> <b>range</b>(start, stop, step)</h3></dt>
-<dd>
-<p>Creates an iterable set of indices between <code>start</code> and <code>stop</code>, jumping over <code>step</code> indices between each.</p>
-</dd>
-<dd>
-<p>The implementation (in SPy) of <code>range</code> can be <a href="https://github.com/spylang/spy/blob/main/stdlib/_range.spy">viewed here</a>.</p>
-</dd>
-</dl>
-<h3 id="reprobject"><strong>repr</strong>(object)<a class="headerlink" href="#reprobject" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>Returns string containing a printable representation of an object.</dd>
-</dl>
-<h3 id="setattrobject-name-str-value-obj"><strong>setattr</strong>(object, name: str, value: obj)<a class="headerlink" href="#setattrobject-name-str-value-obj" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>Assigns <code>value</code> to the attribute of <code>object</code> named by <code>name</code>. <code>attr</code> must be blue.</dd>
-</dl>
-<h3 id="slicestop"><strong>slice</strong>(stop)<a class="headerlink" href="#slicestop" title="Permanent link">&para;</a></h3>
-<dl>
-<dt><!-- An HTML label to hide this in the TOC --><h3><b>slice</b>(start, stop, step=None)</h3></dt>
-<dd>
-<p>Return a slice object representing the items reached when iterating over range(start, stop, step). The start and step arguments default to None.</p>
-</dd>
-</dl>
-<h3 id="strobject"><strong>str</strong>(object)<a class="headerlink" href="#strobject" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>Returns a string version of the object. Selecting an encoding is not currently implemented.</dd>
-</dl>
-<h3 id="tuple"><strong>tuple</strong>()<a class="headerlink" href="#tuple" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>The syntax <code>tuple[t1, t2, ...](val1, val2 ...)</code> can be used to create a new tuple, with <code>t1</code> as the type of <code>val1</code>, etc. unlike CPython, this does not (currently) accept an Iterable to create a new tuple from.</dd>
-<dd>The implementation (in SPy) of <code>tuple</code> can be <a href="https://github.com/spylang/spy/blob/main/stdlib/_tuple.spy">viewed here</a>.</dd>
-</dl>
-<h3 id="typeobject"><strong>type</strong>(object)<a class="headerlink" href="#typeobject" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>Returns the type (i.e. the dynamic type at runtime) of an object</dd>
-</dl>
-<h2 id="not-implemented-cpython-built-ins">Not-Implemented CPython Built-ins<a class="headerlink" href="#not-implemented-cpython-built-ins" title="Permanent link">&para;</a></h2>
-<p>The following CPython built-ins are not currently implemented in SPy. Each category has a brief note about the current state of that category of object or function - some require additional internal mechanics, others are simply lower priority that other facets of the language to this point.</p>
-<h3 id="async">Async<a class="headerlink" href="#async" title="Permanent link">&para;</a></h3>
-<dl>
-<dt>SPy does not currently have an async story.</dt>
-<dd>
-<p>aiter(), anext()</p>
-</dd>
-</dl>
-<h3 id="iterables-and-iterators">Iterables and Iterators<a class="headerlink" href="#iterables-and-iterators" title="Permanent link">&para;</a></h3>
-<p>Iterables and collections are very much an area of active developmen; as their API solidifies, these types of builtins should become more straightforward to implement.</p>
-<dl>
-<dt>Generators are not currently supported in SPy.</dt>
-<dd>
-<p>all(), any(), enumerate(), filter(), iter(), map(), next(), reversed(), sorted(), sum(), zip()</p>
-</dd>
-</dl>
-<h3 id="math">Math<a class="headerlink" href="#math" title="Permanent link">&para;</a></h3>
-<dl>
-<dt>Number types beyond int and float are in active development; some of the math functions below are also in active development.</dt>
-<dd>
-<p>divmod(), bin(), hex(), oct(), pow(), round()</p>
-</dd>
-</dl>
-<h3 id="function-types-introspection-and-metaprogramming">Function Types, Introspection and Metaprogramming<a class="headerlink" href="#function-types-introspection-and-metaprogramming" title="Permanent link">&para;</a></h3>
-<dl>
-<dt>The internals of SPy are significantly different from CPython; as such, the road to (and need for) some of these built-ins is less straightforward. Some are also waiting on internal details to solidify prior to implementation.</dt>
-<dd>
-<p>callable(), classmethod(), compile(), delattr(), eval(), exec(), globals(), help(), id(), isinstance(), issubclass(), locals(), property(), super(), vars(). __import__()</p>
-</dd>
-</dl>
-<h3 id="type-conversion">Type Conversion<a class="headerlink" href="#type-conversion" title="Permanent link">&para;</a></h3>
-<dl>
-<dt>Many of these types are not implemented yet; others are in active development.</dt>
-<dd>
-<p>ascii(), bool(), bytearray(), bytes(), chr(), complex(), format(), frozenset(), memoryview(), ord() set()</p>
-</dd>
-</dl>
-<h3 id="io">I/O<a class="headerlink" href="#io" title="Permanent link">&para;</a></h3>
-<dl>
-<dt>The I/O story is currently a high priority and is in active development.</dt>
-<dd>
-<p>input(), open()</p>
-</dd>
-</dl>
-<!-- An HTML label to hide this in the TOC -->
+<p><div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">#inline_demo.spy</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__spy__</span><span class="w"> </span><span class="kn">import</span> <span class="n">force_inline</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nd">@force_inline</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">i32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">i32</span><span class="p">:</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">inc</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># spy rs inline_demo.spy</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>def<span class="w"> </span>main<span class="o">()</span><span class="w"> </span>-&gt;<span class="w"> </span>None:
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="sb">`</span>_print::_print_one<span class="o">[</span>i32<span class="o">]</span>::impl<span class="sb">`</span><span class="o">(</span>__block__<span class="o">(</span>x<span class="nv">$0</span>:<span class="w"> </span><span class="nv">i32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span>x<span class="nv">$0</span><span class="w"> </span>+<span class="w"> </span><span class="m">1</span><span class="o">))</span>
+</span></code></pre></div></p>
 
 
 
