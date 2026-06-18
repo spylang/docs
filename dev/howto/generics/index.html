@@ -547,14 +547,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/spy_builtins/" class="md-nav__link">
+      <a href="../../reference/spy_builtin_functions/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    SPy Builtins
+    Builtin Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/builtin_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Built-in Types
   
 
     
@@ -948,7 +976,7 @@
 <!-- See https://github.com/spylang/spy/pull/519 and https://github.com/spylang/spy/pull/448-->
 
 <h3 id="generic-functions">Generic Functions<a class="headerlink" href="#generic-functions" title="Permanent link">&para;</a></h3>
-<p>Functions decorated with <a href="../../reference/spy_builtins/#bluegeneric">@blue.generic</a> are called with <code>[]</code> brackets instead of parentheses. These <em>may</em> be used anywhere, but they are intended to help create functions that look like <a href="https://peps.python.org/pep-0695/">PEP 695</a> functions with type parameters:</p>
+<p>Functions decorated with <a href="../reference/spy_builtins.md#bluegeneric">@blue.generic</a> are called with <code>[]</code> brackets instead of parentheses. These <em>may</em> be used anywhere, but they are intended to help create functions that look like <a href="https://peps.python.org/pep-0695/">PEP 695</a> functions with type parameters:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@blue</span><span class="o">.</span><span class="n">generic</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">impl</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="n">T</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
