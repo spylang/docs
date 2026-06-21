@@ -769,6 +769,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        format
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1205,6 +1216,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        format
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1284,6 +1306,10 @@
 <tr>
 <td><code>cleanup</code></td>
 <td>Remove .spyc cache files</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td>Format SPy file</td>
 </tr>
 </tbody>
 </table>
@@ -2035,6 +2061,76 @@
 </tbody>
 </table>
 <h4 id="options_9">Options<a class="headerlink" href="#options_9" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--pdb</code></td>
+<td>Enter interp-level debugger in case of error</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--spdb</code></td>
+<td>Enter app-level debugger in case of error</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>-E, --error-mode [eager|lazy|warn]</code></td>
+<td>Handling strategy for static errors</td>
+<td>No</td>
+<td><code>eager</code></td>
+</tr>
+<tr>
+<td><code>--no-spyc</code></td>
+<td>Disable loading/saving of .spyc cache files</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--extra-vm-module TEXT</code></td>
+<td>Path to an out-of-tree builtin module to load (additive with spy.toml)</td>
+<td>No</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>--no-spy-toml</code></td>
+<td>Ignore spy.toml project manifest</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="format">format<a class="headerlink" href="#format" title="Permanent link">&para;</a></h3>
+<p>Format SPy file</p>
+<h4 id="usage_10">Usage<a class="headerlink" href="#usage_10" title="Permanent link">&para;</a></h4>
+<p><code>spy format [OPTIONS] FILENAME</code></p>
+<h4 id="arguments_10">Arguments<a class="headerlink" href="#arguments_10" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FILENAME</code></td>
+<td></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h4 id="options_10">Options<a class="headerlink" href="#options_10" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
