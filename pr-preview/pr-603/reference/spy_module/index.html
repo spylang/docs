@@ -389,7 +389,7 @@
   <span class="md-ellipsis">
     
   
-    Struct Classes
+    Structs
   
 
     
@@ -626,17 +626,6 @@
     <span class="md-ellipsis">
       
         as_red()
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#markdown" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        STATIC_TYPE()
       
     </span>
   </a>
@@ -1015,17 +1004,6 @@
   <a href="#markdown" class="md-nav__link">
     <span class="md-ellipsis">
       
-        STATIC_TYPE()
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#markdown" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         is_compiled()
       
     </span>
@@ -1107,10 +1085,6 @@
 <dl>
 <dd>If <code>object</code> is a reference type (e.g. strings, int, etc.), <code>as_red</code> simply changes the passed object's color to red. If <code>object</code> is a value type, returns a copy of the object as a red object. </dd>
 <dd>May be useful during metaprograming ensure that blue objects which are equal do not get optimized into the same object at redshift time. See, for example, the <a href="https://github.com/spylang/spy/blob/main/spy/vm/astframe.py#L1161">implementation of <code>exal_expr_List</code></a>.</dd>
-</dl>
-<h3 id="markdown"><strong>STATIC_TYPE</strong>(object)<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
-<dl>
-<dd>Returns the type of the expression determined in a static context. Useful in tests, and is used in some of SPy's internal machinery.</dd>
 </dl>
 <h3 id="markdown"><strong>is_compiled</strong>() -&gt; bool<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h3>
 <dl>
