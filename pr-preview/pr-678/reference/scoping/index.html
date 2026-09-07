@@ -1,0 +1,2603 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../environment/">
+      
+      
+        <link rel="next" href="../../llmem/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Scoping rules - SPy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-1-strict-scoping" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SPy" class="md-header__button md-logo" aria-label="SPy" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SPy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Scoping rules
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/spylang/spy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    spylang/spy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SPy" class="md-nav__button md-logo" aria-label="SPy" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    SPy
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/spylang/spy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    spylang/spy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Language features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howto/main_function/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Main Function
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howto/generics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generic Functions and Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_builtins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CPython-Like Builtins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spy_builtin_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Builtin Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../builtin_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Built-in Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spy_module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The __spy__ Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPy CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environment Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scoping rules
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scoping rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-strict-scoping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 - Strict scoping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 - Strict scoping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decl-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.forms] Declaring a name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decl-no-redeclare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.no-redeclare] No re-declaration in the same scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decl-initializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.initializer] The initializer may be omitted
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decl-auto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.auto] Rules for auto type inference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decl-auto-unification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.auto-unification] Branches must assign the same type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decl-use-before" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.use-before] A name may not be used before its declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.block] Blocks are scopes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-shadow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.shadow] An inner block may shadow an outer name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-branch-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.branch-local] A branch declaration is branch-local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-loop-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.loop-target] A loop target dies with its block
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-loop-target-declare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.loop-target-declare] Declaring the target first makes it outlive the loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-loop-fresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.loop-fresh] A block-local is fresh on each loop iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [name.resolution] Names resolve outward, lexically
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-class-skip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [name.class-skip] Class scopes are skipped by method bodies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [global.write] Writing to a global needs global
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closure-nonlocal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [closure.nonlocal] Closures read outer names freely; writing needs nonlocal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-flat-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [class.flat-body] Class bodies are not blocks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-pythonic-scoping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 - Pythonic scoping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2 - Pythonic scoping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#py-implicit-decl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.implicit-decl] Implicit declaration on the first assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-constness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.constness] var / const is inferred from the number of assignments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-constness-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.constness-paths] The count is per execution path
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-walrus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.walrus] A walrus binds in the enclosing block
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-blue-params" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.blue-params] Blue parameters are always const
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-global-const-by-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.global-const-by-default] Module level is const by default
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-augassign" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.augassign] AugAssign needs an existing binding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-def-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.def-class] A nested def or class is a binding like any other
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-scope-lifting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.scope-lifting] Automatic scope lifting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-shadow-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.shadow-write] A bare assignment never targets an outer function or module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-shadow-write-caught" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.shadow-write-caught] The read-then-write mistake is caught by use-before-declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future directions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future directions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#future-definite-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [future.definite-assignment] Definite assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-narrowing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [future.narrowing] Type narrowing, read-side only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-rebind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [future.rebind] Same-scope rebinding, Rust style
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-block-lifetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [future.block-lifetime] Block-local lifetime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-shadow-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [future.shadow-guard] The shadow guard
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unsorted notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unsorted notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llmem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Low-level memory model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI-generated docs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI-generated docs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-generated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI-generated docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-generated/llwasm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    llwasm, the low-level WASM layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-strict-scoping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 - Strict scoping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 - Strict scoping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decl-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.forms] Declaring a name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decl-no-redeclare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.no-redeclare] No re-declaration in the same scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decl-initializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.initializer] The initializer may be omitted
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decl-auto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.auto] Rules for auto type inference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decl-auto-unification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.auto-unification] Branches must assign the same type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decl-use-before" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [decl.use-before] A name may not be used before its declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.block] Blocks are scopes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-shadow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.shadow] An inner block may shadow an outer name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-branch-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.branch-local] A branch declaration is branch-local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-loop-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.loop-target] A loop target dies with its block
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-loop-target-declare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.loop-target-declare] Declaring the target first makes it outlive the loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scope-loop-fresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [scope.loop-fresh] A block-local is fresh on each loop iteration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [name.resolution] Names resolve outward, lexically
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-class-skip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [name.class-skip] Class scopes are skipped by method bodies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [global.write] Writing to a global needs global
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closure-nonlocal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [closure.nonlocal] Closures read outer names freely; writing needs nonlocal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-flat-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [class.flat-body] Class bodies are not blocks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-pythonic-scoping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 - Pythonic scoping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2 - Pythonic scoping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#py-implicit-decl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.implicit-decl] Implicit declaration on the first assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-constness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.constness] var / const is inferred from the number of assignments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-constness-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.constness-paths] The count is per execution path
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-walrus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.walrus] A walrus binds in the enclosing block
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-blue-params" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.blue-params] Blue parameters are always const
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-global-const-by-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.global-const-by-default] Module level is const by default
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-augassign" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.augassign] AugAssign needs an existing binding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-def-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.def-class] A nested def or class is a binding like any other
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-scope-lifting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.scope-lifting] Automatic scope lifting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-shadow-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.shadow-write] A bare assignment never targets an outer function or module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#py-shadow-write-caught" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [py.shadow-write-caught] The read-then-write mistake is caught by use-before-declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future directions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future directions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#future-definite-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [future.definite-assignment] Definite assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-narrowing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [future.narrowing] Type narrowing, read-side only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-rebind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [future.rebind] Same-scope rebinding, Rust style
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-block-lifetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [future.block-lifetime] Block-local lifetime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#future-shadow-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [future.shadow-guard] The shadow guard
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Scoping rules</h1>
+
+<hr />
+<p>Scoping rules in SPy are somewhat complex and are the result of a tension between two
+conflicting goals:</p>
+<ul>
+<li>
+<p>have "sane" scoping rules, similar to what you have in other statically typed
+  languages. In particular, we want explicit declarations and block-level scoping;</p>
+</li>
+<li>
+<p>preserve the "python feeling" whenever possible, including implicit declarations and a
+  limited form of type inference</p>
+</li>
+</ul>
+<p>This is achieved by having two scoping modes:</p>
+<ul>
+<li>
+<p><strong>Strict scoping</strong> is the explicit core: every binding is introduced by an explicit
+  <code>var</code> or <code>const</code> declaration. It stands on its own and has no Python-specific magic.
+  It can be enabled by using <code>from __spy__ import strict_scoping</code>.</p>
+</li>
+<li>
+<p><strong>Pythonic scoping</strong> is sugar on top of strict scoping, defined by desugaring every
+  implicit binding to an explicit one. It is the default.</p>
+</li>
+</ul>
+<p>This document describes strict scoping first, and then shows how we implement Pythonic
+scoping by desugaring implicit declarations into explicit ones.</p>
+<p>We expect that Pythonic scoping rules are good enough for most daily usage, and most SPy
+code will be written in that style.  The guidelines for the design are:</p>
+<ol>
+<li>
+<p>We aim to preserve Python semantics and/or Python "feeling" when possible.</p>
+</li>
+<li>
+<p>It is fine to deviate from Python semantics if it makes the whole language better.</p>
+</li>
+<li>
+<p>If we deviate from Python semantics, we should detect conflicting/ambiguous cases and
+   report helpful error messages to guide the user towards the equivalent SPy form.</p>
+</li>
+</ol>
+<h2 id="part-1-strict-scoping">Part 1 - Strict scoping<a class="headerlink" href="#part-1-strict-scoping" title="Permanent link">&para;</a></h2>
+<h3 id="decl-forms"><code>[decl.forms]</code> Declaring a name<a class="headerlink" href="#decl-forms" title="Permanent link">&para;</a></h3>
+<p>The full form of a declaration is:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>MODIFIER name: TYPE = initializer
+</span></code></pre></div>
+<p><code>MODIFIER</code> can be:</p>
+<ul>
+<li><code>const</code>: the name is assigned only once</li>
+<li><code>var</code>: the name can be reassigned</li>
+</ul>
+<p>In strict scoping, <code>MODIFIER</code> is mandatory. Under pythonic scoping it can be
+omitted and inferred from the number of assignments, see
+<a href="#py-constness"><code>[py.constness]</code></a>.</p>
+<p>If <code>TYPE</code> is <code>auto</code> or omitted, the type is inferred, see
+<a href="#decl-auto"><code>[decl.auto]</code></a>.</p>
+<p><code>initializer</code> can be omitted.</p>
+<p>The following are valid declarations:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">var</span> <span class="n">a</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span>    <span class="c1"># full form</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">const</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">43</span>  <span class="c1"># cannot be re-assigned</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">var</span> <span class="n">c</span><span class="p">:</span> <span class="nb">int</span>         <span class="c1"># will be initialized later</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">const</span> <span class="n">d</span><span class="p">:</span> <span class="nb">int</span>       <span class="c1"># same (only 1 assignment permitted)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">var</span> <span class="n">e</span><span class="p">:</span> <span class="n">auto</span> <span class="o">=</span> <span class="mi">44</span>   <span class="c1"># inferred type</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">var</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">45</span>         <span class="c1"># same as above</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">var</span> <span class="n">g</span><span class="p">:</span> <span class="n">auto</span>        <span class="c1"># same as above, will be initialized later</span>
+</span></code></pre></div></p>
+<h3 id="decl-no-redeclare"><code>[decl.no-redeclare]</code> No re-declaration in the same scope<a class="headerlink" href="#decl-no-redeclare" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>       <span class="c1"># ERROR: `x` already declared</span>
+</span></code></pre></div>
+<h3 id="decl-initializer"><code>[decl.initializer]</code> The initializer may be omitted<a class="headerlink" href="#decl-initializer" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># 1</span>
+</span></code></pre></div>
+<p>With the current rules, it might happen to read an uninitialized variable:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">42</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># runtime error / UB: `x` may be unassigned</span>
+</span></code></pre></div></p>
+<p>This error is caught at runtime by the interpreter, and results in UB in compiled mode.
+This is a temporary limitation of SPy. Eventually we will implement
+<a href="#future-definite-assignment"><code>[future.definite-assignment]</code></a>.</p>
+<h3 id="decl-auto"><code>[decl.auto]</code> Rules for <code>auto</code> type inference<a class="headerlink" href="#decl-auto" title="Permanent link">&para;</a></h3>
+<p><code>auto</code> implements a very limited form of type inference, by looking at the type of the
+initializer:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">const</span> <span class="n">x</span><span class="p">:</span> <span class="n">auto</span> <span class="o">=</span> <span class="mi">42</span>  <span class="c1"># i32</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">const</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>   <span class="c1"># str</span>
+</span></code></pre></div>
+<p>By design, SPy doesn't do whole-function or whole-program type inference. This is needed
+to support the "fully interpreted" case, in which we execute things line by line:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="nb">object</span> <span class="o">=</span> <span class="mi">42</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>         <span class="c1"># OK</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">var</span> <span class="n">y</span><span class="p">:</span> <span class="n">auto</span> <span class="o">=</span> <span class="mi">42</span>    <span class="c1"># infers i32</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>         <span class="c1"># ERROR: expected `i32`, got `str`</span>
+</span></code></pre></div>
+<p>If the initializer is omitted, the type is fixed on the <strong>first assignment</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">auto</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>               <span class="c1"># fixes x: i32</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>         <span class="c1"># ERROR: expected `i32`, got `str`</span>
+</span></code></pre></div>
+<h3 id="decl-auto-unification"><code>[decl.auto-unification]</code> Branches must assign the same type<a class="headerlink" href="#decl-auto-unification" title="Permanent link">&para;</a></h3>
+<p>Uninitialized <code>auto</code> variables pose a problem in case the first assignment is executed
+inside a conditional:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">auto</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">STATIC_TYPE</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>    <span class="c1"># works in interp, ERROR in compiler</span>
+</span></code></pre></div>
+<p>We have multiple goals and implementation constraints:</p>
+<ol>
+<li>
+<p>we would like to check that the type of <code>x</code> is the same in both branches and emit
+     an error if they don't match.</p>
+</li>
+<li>
+<p>we would like that the <em>SPy interpreter</em> and the <em>SPy compiler</em> produce the exact
+     same behavior.</p>
+</li>
+</ol>
+<p>The problem is that the interpreter only sees the branch which is actually taken, never
+sees the other and thus it cannot possibly do the check.  <strong>The unification check is
+done only when compiling</strong>.</p>
+<p>This means that the snippet above prints either <code>i32</code> or <code>str</code> in <code>interp</code> mode, and
+raises a compile time error in the other cases.  <strong>This is one of the very few known
+cases in which compiled code behaves differently than the interpreter</strong>.</p>
+<p>As a partial mitigation, we impose the rule that the type must be <strong>exactly the same</strong>
+in all branches: we never try to find a common supertype. This way, we guarantee that
+<strong>if compilation succeeds, the behavior is exactly the same as in the interpreter</strong>.</p>
+<p>Consider this case:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">f64</span><span class="p">:</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">auto</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1"># i32</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mf">2.5</span>    <span class="c1"># f64</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="k">return</span> <span class="n">x</span>
+</span></code></pre></div>
+<p>This fails because the inferred type is not an exact match in the two branches.  The fix
+is to name the type you mean, and then the branches are ordinary reassignments against a
+declared type, so conversions apply:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">f64</span><span class="p">:</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">f64</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># OK: implicit i32-&gt;f64 conversion</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mf">2.5</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="k">return</span> <span class="n">x</span>
+</span></code></pre></div>
+<h3 id="decl-use-before"><code>[decl.use-before]</code> A name may not be used before its declaration<a class="headerlink" href="#decl-use-before" title="Permanent link">&para;</a></h3>
+<p>This keeps the meaning of a name constant within a block: the reference does
+not fall through to the outer <code>x</code>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>         <span class="c1"># ERROR: `x` used before its declaration in this block</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>        <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;hi&quot;</span>
+</span></code></pre></div>
+<p>The same holds when the declaration comes later in an <em>enclosing</em> block:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">const</span> <span class="n">A</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>         <span class="c1"># ERROR: `A` is declared later in this function</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="n">var</span> <span class="n">A</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">0</span>
+</span></code></pre></div>
+<h3 id="scope-block"><code>[scope.block]</code> Blocks are scopes<a class="headerlink" href="#scope-block" title="Permanent link">&para;</a></h3>
+<p>The bodies of <code>if</code> / <code>elif</code> / <code>else</code> / <code>for</code> / <code>while</code> each introduce a scope.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>        <span class="n">const</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>         <span class="c1"># 1</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># ERROR: `x` not in scope</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>        <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>        <span class="k">break</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># ERROR: `x` not in scope</span>
+</span></code></pre></div>
+<h3 id="scope-shadow"><code>[scope.shadow]</code> An inner block may shadow an outer name<a class="headerlink" href="#scope-shadow" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="n">const</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">42</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>        <span class="n">const</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;hi&quot;</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>         <span class="c1"># &quot;hi&quot;</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># 42</span>
+</span></code></pre></div>
+<p>The same holds for loop bodies:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>        <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">10</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>         <span class="c1"># 0, 10, 20</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># 1</span>
+</span></code></pre></div>
+<h3 id="scope-branch-local"><code>[scope.branch-local]</code> A branch declaration is branch-local<a class="headerlink" href="#scope-branch-local" title="Permanent link">&para;</a></h3>
+<p>Each branch is its own scope, so neither declaration survives the <code>if</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>        <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>        <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># ERROR: `x` not in scope</span>
+</span></code></pre></div>
+<p>Declare it before the <code>if</code> to share one binding:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># OK</span>
+</span></code></pre></div>
+<h3 id="scope-loop-target"><code>[scope.loop-target]</code> A loop target dies with its block<a class="headerlink" href="#scope-loop-target" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>        <span class="k">pass</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>             <span class="c1"># ERROR: `i` is local to the `for` body</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>                         <span class="c1">#        help: declare `var i: auto` before the loop</span>
+</span></code></pre></div>
+<p>The next loop may therefore reuse the name at a different type.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>         <span class="c1"># i: i32</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]:</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>         <span class="c1"># i: str, a different binding</span>
+</span></code></pre></div>
+<h3 id="scope-loop-target-declare"><code>[scope.loop-target-declare]</code> Declaring the target first makes it outlive the loop<a class="headerlink" href="#scope-loop-target-declare" title="Permanent link">&para;</a></h3>
+<p>A loop target is an ordinary assignment: if a binding of the same name already
+exists in an enclosing block, the loop reuses it instead of creating a fresh
+block-local.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="n">var</span> <span class="n">i</span><span class="p">:</span> <span class="n">auto</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>        <span class="k">pass</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>             <span class="c1"># OK: 2</span>
+</span></code></pre></div>
+<p>If the target is declared with a type, the element type must match it:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    <span class="n">var</span> <span class="n">i</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>  <span class="c1"># ERROR: expected `str`, got `i32`</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>        <span class="k">pass</span>
+</span></code></pre></div>
+<p>An empty iterable leaves it unassigned, see
+<a href="#decl-initializer"><code>[decl.initializer]</code></a>.</p>
+<h3 id="scope-loop-fresh"><code>[scope.loop-fresh]</code> A block-local is fresh on each loop iteration<a class="headerlink" href="#scope-loop-fresh" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>        <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>            <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>         <span class="c1"># when i == 1: `x` is unassigned</span>
+</span></code></pre></div>
+<h3 id="name-resolution"><code>[name.resolution]</code> Names resolve outward, lexically<a class="headerlink" href="#name-resolution" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">const</span> <span class="n">K</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">42</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>             <span class="c1"># OK</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">nope</span><span class="p">)</span>          <span class="c1"># ERROR: NameError</span>
+</span></code></pre></div>
+<h3 id="name-class-skip"><code>[name.class-skip]</code> Class scopes are skipped by method bodies<a class="headerlink" href="#name-class-skip" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nd">@struct</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">P</span><span class="p">:</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    <span class="n">x</span><span class="p">:</span> <span class="n">i32</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">i32</span><span class="p">:</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>        <span class="k">return</span> <span class="n">x</span>         <span class="c1"># ERROR: NameError (use `self.x`)</span>
+</span></code></pre></div>
+<h3 id="global-write"><code>[global.write]</code> Writing to a global needs <code>global</code><a class="headerlink" href="#global-write" title="Permanent link">&para;</a></h3>
+<p>A function can read a module-level name freely, but assigning to it requires
+the <code>global</code> declaration, and the binding must be a <code>var</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__spy__</span><span class="w"> </span><span class="kn">import</span> <span class="n">strict_scoping</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">42</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">var</span> <span class="n">y</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">43</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># OK: read</span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>    <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># ERROR: `y` is not declared; say `global y`</span>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>    <span class="k">global</span> <span class="n">x</span>
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># OK: mutates the global</span>
+</span></code></pre></div>
+<p><code>global</code> only re-targets the assignment; it does not grant mutability, so a
+<code>const</code> global cannot be modified:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">const</span> <span class="n">A</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    <span class="k">global</span> <span class="n">A</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="n">A</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># ERROR: `A` is a const (help: declare it `var A`)</span>
+</span></code></pre></div>
+<h3 id="closure-nonlocal"><code>[closure.nonlocal]</code> Closures read outer names freely; writing needs <code>nonlocal</code><a class="headerlink" href="#closure-nonlocal" title="Permanent link">&para;</a></h3>
+<p>This works like <code>global</code>, but for closures:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__spy__</span><span class="w"> </span><span class="kn">import</span> <span class="n">strict_scoping</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>    <span class="n">const</span> <span class="n">y</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>         <span class="c1"># OK: read capture</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">bad</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># ERROR: `x` is not declared; say `nonlocal x`</span>
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">good</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>        <span class="k">nonlocal</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># OK</span>
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>        <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># ERROR: `y` is a const (help: declare it `var y`)</span>
+</span></code></pre></div></p>
+<p>Like <code>global</code>, <code>nonlocal</code> only re-targets the assignment; it does not grant
+mutability (see <a href="#global-write"><code>[global.write]</code></a>).</p>
+<h3 id="class-flat-body"><code>[class.flat-body]</code> Class bodies are not blocks<a class="headerlink" href="#class-flat-body" title="Permanent link">&para;</a></h3>
+<p>Field declarations bind in the class scope whatever their nesting.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nd">@struct</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">P</span><span class="p">:</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="n">x</span><span class="p">:</span> <span class="n">i32</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    <span class="k">if</span> <span class="n">COND</span><span class="p">:</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>        <span class="n">y</span><span class="p">:</span> <span class="n">i32</span>           <span class="c1"># OK: still a field of P</span>
+</span></code></pre></div>
+<h2 id="part-2-pythonic-scoping">Part 2 - Pythonic scoping<a class="headerlink" href="#part-2-pythonic-scoping" title="Permanent link">&para;</a></h2>
+<p>Sugar over strict scoping: every rule below has an explicit equivalent, and
+<code>from __spy__ import strict_scoping</code> removes it.</p>
+<h3 id="py-implicit-decl"><code>[py.implicit-decl]</code> Implicit declaration on the first assignment<a class="headerlink" href="#py-implicit-decl" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># like: const x: i32 = 0</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+<p>A later assignment is a reassignment, not a new declaration:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># like: var x: i32 = 0</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</span></code></pre></div>
+<p>Unpacking targets are implicit declarations too:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">t</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>             <span class="c1"># 1</span>
+</span></code></pre></div>
+<h3 id="py-constness"><code>[py.constness]</code> <code>var</code> / <code>const</code> is inferred from the number of assignments<a class="headerlink" href="#py-constness" title="Permanent link">&para;</a></h3>
+<p>Not to be confused with mutability of values: this is about whether the <em>name</em> is
+rebound, not whether the object it refers to can be mutated.  Assigned once → <code>const</code>;
+assigned more than once → <code>var</code>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># const</span>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># var</span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># var</span>
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>    <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></div>
+<p>The same inference applies to a declaration that has a type but no modifier (see
+<a href="#decl-forms"><code>[decl.forms]</code></a>):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="n">a</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>           <span class="c1"># const</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="n">b</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>           <span class="c1"># var</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span>
+</span></code></pre></div>
+<h3 id="py-constness-paths"><code>[py.constness-paths]</code> The count is per execution path<a class="headerlink" href="#py-constness-paths" title="Permanent link">&para;</a></h3>
+<p>A statement sequence sums; an <code>if</code> chain takes the max over its branches.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="n">n</span><span class="p">:</span> <span class="n">auto</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>        <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>            <span class="c1"># one assignment on either path → const</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>        <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    <span class="n">n</span><span class="p">:</span> <span class="n">auto</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>        <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>        <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>    <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>                <span class="c1"># now two on every path → var</span>
+</span></code></pre></div>
+<p>A parameter counts as one assignment at entry, so assigning to it makes it
+<code>var</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">i32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>   <span class="c1"># x: const</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">i32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>   <span class="c1"># x: var</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</span></code></pre></div>
+<p>A declaration counts one only if it has an initializer:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>    <span class="n">x</span><span class="p">:</span> <span class="n">i32</span>               <span class="c1"># zero</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># one on this path</span>
+</span></code></pre></div>
+<p>An assignment inside a loop counts as multiple assignments, since the loop may
+run more than once. A name declared outside the loop and assigned inside it is
+therefore <code>var</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    <span class="n">n</span><span class="p">:</span> <span class="n">auto</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>        <span class="n">n</span> <span class="o">=</span> <span class="n">i</span>            <span class="c1"># inside a loop → counts as multiple → var</span>
+</span></code></pre></div>
+<h3 id="py-walrus"><code>[py.walrus]</code> A walrus binds in the enclosing block<a class="headerlink" href="#py-walrus" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">:=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>         <span class="c1"># 5</span>
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># OK: x lives in the function block</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>    <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">:=</span> <span class="n">next_one</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>             <span class="c1"># OK: n lives in the function block</span>
+</span></code></pre></div>
+<h3 id="py-blue-params"><code>[py.blue-params]</code> Blue parameters are always <code>const</code><a class="headerlink" href="#py-blue-params" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nd">@blue</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">i32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>            <span class="c1"># ERROR: blue function arguments are const by default</span>
+</span></code></pre></div>
+<h3 id="py-global-const-by-default"><code>[py.global-const-by-default]</code> Module level is <code>const</code> by default<a class="headerlink" href="#py-global-const-by-default" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span>                    <span class="c1"># const</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="n">var</span> <span class="n">B</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">2</span>           <span class="c1"># var</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="n">A</span> <span class="o">=</span> <span class="mi">2</span>                    <span class="c1"># ERROR: `A` already declared</span>
+</span></code></pre></div>
+<h3 id="py-augassign"><code>[py.augassign]</code> <code>AugAssign</code> needs an existing binding<a class="headerlink" href="#py-augassign" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>               <span class="c1"># ERROR: name `x` is not defined</span>
+</span></code></pre></div>
+<h3 id="py-def-class"><code>[py.def-class]</code> A nested <code>def</code> or <code>class</code> is a binding like any other<a class="headerlink" href="#py-def-class" title="Permanent link">&para;</a></h3>
+<p>There is no special case: it follows the same rules as other assignments, so
+it is block-local, and eligible for scope lifting
+(<a href="#py-scope-lifting"><code>[py.scope-lifting]</code></a>).</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">COND</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>    <span class="k">if</span> <span class="n">COND</span><span class="p">:</span>
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a>        <span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">i32</span><span class="p">:</span>
+</span><span id="__span-46-6"><a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>            <span class="k">return</span> <span class="mi">42</span>
+</span><span id="__span-46-7"><a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">())</span>           <span class="c1"># ERROR: `g` is local to the `if` body</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>    <span class="k">if</span> <span class="n">COND</span><span class="p">:</span>
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>        <span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">i32</span><span class="p">:</span> <span class="k">return</span> <span class="mi">42</span>
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a>        <span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">i32</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
+</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">())</span>           <span class="c1"># OK: lifted</span>
+</span></code></pre></div>
+<h3 id="py-scope-lifting"><code>[py.scope-lifting]</code> Automatic scope lifting<a class="headerlink" href="#py-scope-lifting" title="Permanent link">&para;</a></h3>
+<p>A name implicitly assigned anywhere inside an <code>if</code>/<code>elif</code>/<code>else</code> chain is
+lifted to the enclosing block - unconditionally, regardless of whether every
+branch assigns it and whether the chain has an <code>else</code> at all. The basic idea
+is that something like this should work "out of the box":</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">i32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">i32</span><span class="p">:</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>        <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span>
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a>        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+</span><span id="__span-48-6"><a id="__codelineno-48-6" name="__codelineno-48-6" href="#__codelineno-48-6"></a>    <span class="k">return</span> <span class="n">y</span>             <span class="c1"># OK: lifted</span>
+</span></code></pre></div>
+<p>Explicit equivalent:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">i32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">i32</span><span class="p">:</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>    <span class="n">var</span> <span class="n">y</span><span class="p">:</span> <span class="n">i32</span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>        <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span>
+</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-49-6"><a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a>        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+</span><span id="__span-49-7"><a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a>    <span class="k">return</span> <span class="n">y</span>
+</span></code></pre></div>
+<p><code>elif</code> chains lift the same way. Nesting is not special: each <code>if</code> applies
+the same rule, so a name lifted out of an inner chain is just an ordinary
+implicit assignment as far as the outer chain is concerned, and it lifts
+again if the outer chain also assigns it on every spelled-out branch:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">i32</span><span class="p">:</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>    <span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>        <span class="k">if</span> <span class="n">b</span><span class="p">:</span>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>            <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>            <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-50-7"><a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-50-8"><a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span id="__span-50-9"><a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a>    <span class="k">return</span> <span class="n">x</span>             <span class="c1"># OK: lifted twice</span>
+</span></code></pre></div>
+<h4 id="py-scope-lifting-partial"><code>[py.scope-lifting-partial]</code> Lifting does not check that every branch assigns<a class="headerlink" href="#py-scope-lifting-partial" title="Permanent link">&para;</a></h4>
+<p>At this stage, we opt for a very simple rule: implicit declarations made inside an <code>if</code>
+are always lifted.  Reading a name that turns out not to have been assigned on the
+branch actually taken carries the same risk as reading an uninitialized explicit
+declaration (see <a href="#decl-initializer"><code>[decl.initializer]</code></a>):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># OK: lifted; runtime error / UB if `cond` is False</span>
+</span></code></pre></div>
+<p>Is equivalent to:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>    <span class="n">cond</span><span class="p">:</span> <span class="n">auto</span>           <span class="c1"># implicit lifting</span>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-52-5"><a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p><a href="#future-definite-assignment"><code>[future.definite-assignment]</code></a> describes how
+this could eventually become a static error instead.</p>
+<h4 id="py-scope-lifting-opt-out"><code>[py.scope-lifting-opt-out]</code> Explicit declarations are never lifted<a class="headerlink" href="#py-scope-lifting-opt-out" title="Permanent link">&para;</a></h4>
+<p>This is how you opt out.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>        <span class="n">const</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-53-5"><a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>        <span class="n">const</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-53-6"><a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># ERROR: branch-local</span>
+</span></code></pre></div>
+<p>A chain may not mix spellings for the same name: if one branch declares it explicitly
+and another implicitly, that is an error:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>        <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># ERROR: `x` is declared explicitly here...</span>
+</span><span id="__span-54-4"><a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-54-5"><a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>            <span class="c1">#        ...and implicitly here</span>
+</span></code></pre></div>
+<p>A name lifted into a branch from a nested chain counts as implicit for this
+check, so it does not clash with a bare assignment in a sibling branch:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>    <span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>        <span class="k">if</span> <span class="n">b</span><span class="p">:</span>
+</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>            <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-55-5"><a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-55-6"><a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a>            <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>        <span class="c1"># `x` lifted here, still counts as implicit</span>
+</span><span id="__span-55-7"><a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-55-8"><a id="__codelineno-55-8" name="__codelineno-55-8" href="#__codelineno-55-8"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>            <span class="c1"># OK: also implicit, no conflict</span>
+</span><span id="__span-55-9"><a id="__codelineno-55-9" name="__codelineno-55-9" href="#__codelineno-55-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Name lifting never crosses loop boundaries:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+</span><span id="__span-56-3"><a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a>        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-56-4"><a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a>            <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span id="__span-56-5"><a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>            <span class="c1"># ERROR: `x` is not declared</span>
+</span></code></pre></div></p>
+<h4 id="py-scope-lifting-loop"><code>[py.scope-lifting-loop]</code> Loop bodies never lift<a class="headerlink" href="#py-scope-lifting-loop" title="Permanent link">&para;</a></h4>
+<p>Unlike <code>if</code>, a loop body must stay its own scope even when a name is
+assigned on every iteration. <a href="#py-scope-lifting-unroll">Blue-time
+unrolling</a> relies on each iteration getting its
+own fresh binding, potentially with its own type; lifting loop bodies the
+way <code>if</code> does would collapse that into a single binding and break
+unrolling.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>        <span class="n">total</span> <span class="o">=</span> <span class="n">i</span>
+</span><span id="__span-57-4"><a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>         <span class="c1"># ERROR: `total` not in scope</span>
+</span></code></pre></div>
+<h4 id="py-scope-lifting-blue"><code>[py.scope-lifting-blue]</code> A blue test collapses the chain<a class="headerlink" href="#py-scope-lifting-blue" title="Permanent link">&para;</a></h4>
+<p>Only the taken branch is compiled, so there is no second type to compare.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="nd">@blue</span>
+</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-58-3"><a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>    <span class="k">if</span> <span class="n">SOME_BLUE_FLAG</span><span class="p">:</span>
+</span><span id="__span-58-4"><a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># x: i32</span>
+</span><span id="__span-58-5"><a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-58-6"><a id="__codelineno-58-6" name="__codelineno-58-6" href="#__codelineno-58-6"></a>        <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;hi&quot;</span>         <span class="c1"># not compiled</span>
+</span><span id="__span-58-7"><a id="__codelineno-58-7" name="__codelineno-58-7" href="#__codelineno-58-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># OK</span>
+</span></code></pre></div>
+<h4 id="py-scope-lifting-const"><code>[py.scope-lifting-const]</code> A lifted binding is <code>const</code> when every path assigns it once<a class="headerlink" href="#py-scope-lifting-const" title="Permanent link">&para;</a></h4>
+<p>So it stays blue under a blue test:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="n">TUP</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span>
+</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a><span class="n">COND</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-59-3"><a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a>
+</span><span id="__span-59-4"><a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a><span class="nd">@blue</span>
+</span><span id="__span-59-5"><a id="__codelineno-59-5" name="__codelineno-59-5" href="#__codelineno-59-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-59-6"><a id="__codelineno-59-6" name="__codelineno-59-6" href="#__codelineno-59-6"></a>    <span class="k">if</span> <span class="n">COND</span><span class="p">:</span>
+</span><span id="__span-59-7"><a id="__codelineno-59-7" name="__codelineno-59-7" href="#__codelineno-59-7"></a>        <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-59-8"><a id="__codelineno-59-8" name="__codelineno-59-8" href="#__codelineno-59-8"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-59-9"><a id="__codelineno-59-9" name="__codelineno-59-9" href="#__codelineno-59-9"></a>        <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-59-10"><a id="__codelineno-59-10" name="__codelineno-59-10" href="#__codelineno-59-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">TUP</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>        <span class="c1"># OK: const → blue</span>
+</span></code></pre></div>
+<p>Under a red test the value depends on which branch ran, so it is red:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-60-2"><a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-60-3"><a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a>        <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-60-4"><a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-60-5"><a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a>        <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-60-6"><a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">TUP</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>        <span class="c1"># ERROR: tuple index must be blue</span>
+</span></code></pre></div>
+<p>This applies only to lifted bindings: an ordinary block-local inside a
+red-tested branch is still blue.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-61-3"><a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>        <span class="n">m</span> <span class="o">=</span> <span class="mi">0</span>            <span class="c1"># const → blue</span>
+</span><span id="__span-61-4"><a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">TUP</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>    <span class="c1"># 1</span>
+</span></code></pre></div>
+<h4 id="py-scope-lifting-unroll"><code>[py.scope-lifting-unroll]</code> Scope lifting + blue-time loop unrolling<a class="headerlink" href="#py-scope-lifting-unroll" title="Permanent link">&para;</a></h4>
+<p><code>item</code> is lifted to the loop body block, never to the function, so each
+unrolled iteration gets its own binding with its own type.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="n">TUP</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span>
+</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a>
+</span><span id="__span-62-3"><a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-62-4"><a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">unroll</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)):</span>
+</span><span id="__span-62-5"><a id="__codelineno-62-5" name="__codelineno-62-5" href="#__codelineno-62-5"></a>        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-62-6"><a id="__codelineno-62-6" name="__codelineno-62-6" href="#__codelineno-62-6"></a>            <span class="n">item</span> <span class="o">=</span> <span class="n">TUP</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-62-7"><a id="__codelineno-62-7" name="__codelineno-62-7" href="#__codelineno-62-7"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-62-8"><a id="__codelineno-62-8" name="__codelineno-62-8" href="#__codelineno-62-8"></a>            <span class="n">item</span> <span class="o">=</span> <span class="n">TUP</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span><span id="__span-62-9"><a id="__codelineno-62-9" name="__codelineno-62-9" href="#__codelineno-62-9"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>      <span class="c1"># i32, then f64, then str</span>
+</span></code></pre></div>
+<p>Roughly, after redshifting:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-63-2"><a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>    <span class="n">item</span><span class="err">$</span><span class="mi">0</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-63-3"><a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-63-4"><a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a>    <span class="n">item</span><span class="err">$</span><span class="mi">1</span> <span class="o">=</span> <span class="mf">2.5</span>
+</span><span id="__span-63-5"><a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="err">$</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-63-6"><a id="__codelineno-63-6" name="__codelineno-63-6" href="#__codelineno-63-6"></a>    <span class="n">item</span><span class="err">$</span><span class="mi">2</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+</span><span id="__span-63-7"><a id="__codelineno-63-7" name="__codelineno-63-7" href="#__codelineno-63-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="err">$</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="py-shadow-write"><code>[py.shadow-write]</code> A bare assignment never targets an outer function or module<a class="headerlink" href="#py-shadow-write" title="Permanent link">&para;</a></h3>
+<p>It binds locally even when the name is visible outside. Use <code>global</code> /
+<code>nonlocal</code> to reach outward, the same rule as Python.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="n">var</span> <span class="n">B</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-64-2"><a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>
+</span><span id="__span-64-3"><a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-64-4"><a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a>    <span class="n">B</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># a new local B; the global is untouched</span>
+</span><span id="__span-64-5"><a id="__codelineno-64-5" name="__codelineno-64-5" href="#__codelineno-64-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>             <span class="c1"># 0</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-65-2"><a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a>    <span class="k">global</span> <span class="n">B</span>
+</span><span id="__span-65-3"><a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a>    <span class="n">B</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># mutate the outer B</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span>                    <span class="c1"># module-level const</span>
+</span><span id="__span-66-2"><a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>
+</span><span id="__span-66-3"><a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-66-4"><a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a>    <span class="n">A</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># a new local A, shadowing the const</span>
+</span></code></pre></div>
+<p>The same rule covers closures:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-67-2"><a id="__codelineno-67-2" name="__codelineno-67-2" href="#__codelineno-67-2"></a>    <span class="n">var</span> <span class="n">n</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-67-3"><a id="__codelineno-67-3" name="__codelineno-67-3" href="#__codelineno-67-3"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-67-4"><a id="__codelineno-67-4" name="__codelineno-67-4" href="#__codelineno-67-4"></a>        <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># a new local n in inner</span>
+</span><span id="__span-67-5"><a id="__codelineno-67-5" name="__codelineno-67-5" href="#__codelineno-67-5"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">writer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-67-6"><a id="__codelineno-67-6" name="__codelineno-67-6" href="#__codelineno-67-6"></a>        <span class="k">nonlocal</span> <span class="n">n</span>
+</span><span id="__span-67-7"><a id="__codelineno-67-7" name="__codelineno-67-7" href="#__codelineno-67-7"></a>        <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># mutates outer&#39;s n</span>
+</span></code></pre></div>
+<h3 id="py-shadow-write-caught"><code>[py.shadow-write-caught]</code> The read-then-write mistake is caught by use-before-declaration<a class="headerlink" href="#py-shadow-write-caught" title="Permanent link">&para;</a></h3>
+<p>Forgetting <code>global</code> is the classic Python mistake. In its usual shape,
+<a href="#decl-use-before"><code>[decl.use-before]</code></a> turns it into a static error.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="n">var</span> <span class="n">COUNT</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-68-2"><a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a>
+</span><span id="__span-68-3"><a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">bump</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-68-4"><a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a>    <span class="n">COUNT</span> <span class="o">=</span> <span class="n">COUNT</span> <span class="o">+</span> <span class="mi">1</span>    <span class="c1"># ERROR: `COUNT` used before its declaration</span>
+</span></code></pre></div>
+<p>A write-only shadow stays silent. We are aware of it and accept it for now;
+real usage will tell us whether it deserves a diagnostic (see
+<a href="#future-shadow-guard"><code>[future.shadow-guard]</code></a>).</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="n">var</span> <span class="n">COUNT</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-69-2"><a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>
+</span><span id="__span-69-3"><a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-69-4"><a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>    <span class="n">COUNT</span> <span class="o">=</span> <span class="mi">0</span>            <span class="c1"># a dead local; the global is untouched</span>
+</span></code></pre></div>
+<h2 id="future-directions">Future directions<a class="headerlink" href="#future-directions" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Not yet implemented</p>
+<p>The rules in this section describe ideas under discussion. None of them are
+implemented; they are documented here to give context for design decisions
+made elsewhere in this page.</p>
+</div>
+<h3 id="future-definite-assignment"><code>[future.definite-assignment]</code> Definite assignment<a class="headerlink" href="#future-definite-assignment" title="Permanent link">&para;</a></h3>
+<p>Makes the current dynamic "read from uninitialized local" check static, for
+both explicit declarations and lifted implicit ones. This is likely the
+first item from this section we implement, since it directly tightens
+<a href="#py-scope-lifting"><code>[py.scope-lifting]</code></a>.</p>
+<p>For an explicit declaration:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-70-2"><a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span>
+</span><span id="__span-70-3"><a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-70-4"><a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-70-5"><a id="__codelineno-70-5" name="__codelineno-70-5" href="#__codelineno-70-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># ERROR: `x` may be uninitialized</span>
+</span></code></pre></div>
+<p>For a lifted name (see
+<a href="#py-scope-lifting-partial"><code>[py.scope-lifting-partial]</code></a>), the same
+analysis would reject the possibly-unassigned case statically instead of
+accepting it with a runtime/UB risk:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-71-2"><a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-71-3"><a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-71-4"><a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># under this rule: ERROR, `x` may be uninitialized</span>
+</span></code></pre></div>
+<p>Once the analysis exists, it is natural to use it to make scope lifting
+<em>checked</em> rather than purely syntactic: <code>return</code>, <code>raise</code>, <code>break</code> and
+<code>continue</code> would end a branch, so it would not need to assign the name (a
+call that never returns would still not count, since <code>NoReturn</code> is not
+tracked):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">i32</span><span class="p">:</span>
+</span><span id="__span-72-2"><a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-72-3"><a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a>        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-72-4"><a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-72-5"><a id="__codelineno-72-5" name="__codelineno-72-5" href="#__codelineno-72-5"></a>        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;nope&quot;</span><span class="p">)</span>
+</span><span id="__span-72-6"><a id="__codelineno-72-6" name="__codelineno-72-6" href="#__codelineno-72-6"></a>    <span class="k">return</span> <span class="n">x</span>             <span class="c1"># OK: `x` is definitely assigned</span>
+</span></code></pre></div>
+<h3 id="future-narrowing"><code>[future.narrowing]</code> Type narrowing, read-side only<a class="headerlink" href="#future-narrowing" title="Permanent link">&para;</a></h3>
+<p>The declared type never changes; narrowing is a lens for reads.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-73-2"><a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">i32</span><span class="p">):</span>
+</span><span id="__span-73-3"><a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>        <span class="n">use_int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>       <span class="c1"># x reads as i32</span>
+</span><span id="__span-73-4"><a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-73-5"><a id="__codelineno-73-5" name="__codelineno-73-5" href="#__codelineno-73-5"></a>        <span class="n">use_str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>       <span class="c1"># x reads as str</span>
+</span><span id="__span-73-6"><a id="__codelineno-73-6" name="__codelineno-73-6" href="#__codelineno-73-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="c1"># x: i32 | str again</span>
+</span></code></pre></div>
+<p><code>assert</code> narrows to the end of the enclosing block:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-74-1"><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-74-2"><a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-74-3"><a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a>        <span class="k">assert</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span id="__span-74-4"><a id="__codelineno-74-4" name="__codelineno-74-4" href="#__codelineno-74-4"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>     <span class="c1"># x: i32</span>
+</span><span id="__span-74-5"><a id="__codelineno-74-5" name="__codelineno-74-5" href="#__codelineno-74-5"></a>    <span class="n">use</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>               <span class="c1"># x: i32 | None</span>
+</span></code></pre></div>
+<p>A write invalidates the narrowing:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-75-1"><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-75-2"><a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">i32</span><span class="p">):</span>
+</span><span id="__span-75-3"><a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>        <span class="n">use_int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>       <span class="c1"># x: i32</span>
+</span><span id="__span-75-4"><a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a>        <span class="n">x</span> <span class="o">=</span> <span class="n">some</span><span class="p">()</span>
+</span><span id="__span-75-5"><a id="__codelineno-75-5" name="__codelineno-75-5" href="#__codelineno-75-5"></a>        <span class="n">use</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>           <span class="c1"># x: i32 | str</span>
+</span></code></pre></div>
+<h3 id="future-rebind"><code>[future.rebind]</code> Same-scope rebinding, Rust style<a class="headerlink" href="#future-rebind" title="Permanent link">&para;</a></h3>
+<p>Relaxes <a href="#decl-no-redeclare"><code>[decl.no-redeclare]</code></a>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-76-1"><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-76-2"><a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-76-3"><a id="__codelineno-76-3" name="__codelineno-76-3" href="#__codelineno-76-3"></a>    <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;hi&quot;</span>    <span class="c1"># OK under this rule: a fresh binding</span>
+</span></code></pre></div>
+<h3 id="future-block-lifetime"><code>[future.block-lifetime]</code> Block-local lifetime<a class="headerlink" href="#future-block-lifetime" title="Permanent link">&para;</a></h3>
+<p>Block-locals currently stay reachable until the function returns; this rule
+would make them die with their block, and let the C backend emit one <code>{ }</code>
+per block.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-77-1"><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-77-2"><a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+</span><span id="__span-77-3"><a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>        <span class="n">var</span> <span class="n">big</span> <span class="o">=</span> <span class="n">make_huge</span><span class="p">()</span>
+</span><span id="__span-77-4"><a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a>    <span class="c1"># `big` would be collectable here, not at function exit</span>
+</span><span id="__span-77-5"><a id="__codelineno-77-5" name="__codelineno-77-5" href="#__codelineno-77-5"></a>    <span class="n">do_other_work</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="future-shadow-guard"><code>[future.shadow-guard]</code> The shadow guard<a class="headerlink" href="#future-shadow-guard" title="Permanent link">&para;</a></h3>
+<p>Reject a bare assignment when the name is visible as a mutable <code>var</code> in an
+outer function or module scope, instead of silently making a local
+(<a href="#py-shadow-write"><code>[py.shadow-write]</code></a>). Shadowing an outer <code>const</code>
+would stay silent, since there is no mutable binding to hit by accident.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-78-1"><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="n">var</span> <span class="n">B</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="__span-78-2"><a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>
+</span><span id="__span-78-3"><a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-78-4"><a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a>    <span class="n">B</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># under this rule: ERROR - say `global B`, or `var B` for a local</span>
+</span></code></pre></div>
+<p>It targets the one case <a href="#decl-use-before"><code>[decl.use-before]</code></a> cannot catch,
+the write-only shadow:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-79-1"><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="n">var</span> <span class="n">COUNT</span><span class="p">:</span> <span class="n">i32</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-79-2"><a id="__codelineno-79-2" name="__codelineno-79-2" href="#__codelineno-79-2"></a>
+</span><span id="__span-79-3"><a id="__codelineno-79-3" name="__codelineno-79-3" href="#__codelineno-79-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-79-4"><a id="__codelineno-79-4" name="__codelineno-79-4" href="#__codelineno-79-4"></a>    <span class="n">COUNT</span> <span class="o">=</span> <span class="mi">0</span>            <span class="c1"># under this rule: ERROR instead of a silent dead local</span>
+</span></code></pre></div>
+<p>Against it: name resolution would depend on the mutability of a binding in
+another scope, and a function that legitimately wants a local named like a
+mutable global would have to rename or declare it explicitly. A narrower
+alternative is a warning when an implicit local shadows a visible outer name
+<em>and is never read</em>, which is the accidental-global-write signature without
+the false positives.
+</content></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/spylang/spy" target="_blank" rel="noopener" title="SPy on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
