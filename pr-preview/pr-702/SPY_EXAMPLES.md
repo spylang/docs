@@ -51,7 +51,7 @@ Output:
 ```
 2
 SPy
-<spy `_tuple::tuple[i32, str]::_tup` object at <ADDR>>
+(2, 'SPy')
 20
 <spy `_dict::dict[str, i32]::_dict` object at <ADDR>>
 Hello SPy
@@ -369,7 +369,10 @@ after imports, the modules are frozen (immutable) and module-level assignments c
 by default blue and immutable (const) variables.
 
 However:
-  - `var` declares a mutable global variable — reassignment is then allowed.
+
+  - `var` declares a mutable global variable: reassignment is then allowed, although it
+    still requires a `global` declaration inside the function.
+
   - `var` globals are especially useful for mutable pointers (e.g. gc_ptr[T])
     which appear in low-level and advanced examples.
 
@@ -390,6 +393,7 @@ var counter: i32 = 0
 
 
 def increment() -> None:
+    global counter
     counter = counter + 1
 
 
