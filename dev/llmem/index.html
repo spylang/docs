@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../reference/environment/">
+        <link rel="prev" href="../reference/scoping/">
       
       
         <link rel="next" href="../ai-generated/">
@@ -591,6 +591,34 @@
     
   
     Environment Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/scoping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scoping rules
   
 
     
@@ -1260,7 +1288,7 @@ fields without having to use <code>[0]</code>, exactly as in C:</p>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">assert</span> <span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">x</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="k">assert</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">y</span>
 </span></code></pre></div>
-<p>The low-level representation of pointers depends on the excecution mode.</p>
+<p>The low-level representation of pointers depends on the execution mode.</p>
 <p>The interpreter keeps track of the address <strong>and the length</strong> of the allocated region,
 and checks for out-of-bounds access:</p>
 <div align="right"><sub><a href="https://github.com/spylang/spy/blob/8a360bc11d95db09fee34964ce3cab6639c06f1f/spy/vm/modules/unsafe/ptr.py#L128-L150">See on GitHub</a></sub></div>

@@ -715,6 +715,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#astcompile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        astcompile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#parse" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -748,10 +759,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#symtable" class="md-nav__link">
+  <a href="#scopes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        symtable
+        scopes
       
     </span>
   </a>
@@ -809,6 +820,34 @@
     
   
     Environment Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scoping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scoping rules
   
 
     
@@ -1162,6 +1201,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#astcompile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        astcompile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#parse" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1195,10 +1245,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#symtable" class="md-nav__link">
+  <a href="#scopes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        symtable
+        scopes
       
     </span>
   </a>
@@ -1288,6 +1338,10 @@
 <td>Output the redshifted code or AST with...</td>
 </tr>
 <tr>
+<td><code>astcompile</code></td>
+<td>Dump the astcompiled SPy AST</td>
+</tr>
+<tr>
 <td><code>parse</code></td>
 <td>Dump the SPy AST</td>
 </tr>
@@ -1300,8 +1354,8 @@
 <td>Dump the (recursive) list of imports</td>
 </tr>
 <tr>
-<td><code>symtable</code></td>
-<td>Dump the symtables</td>
+<td><code>scopes</code></td>
+<td>Dump the lexical scopes and frame infos</td>
 </tr>
 <tr>
 <td><code>cleanup</code></td>
@@ -1493,7 +1547,7 @@
 <td><code>native</code></td>
 </tr>
 <tr>
-<td><code>-k, --output-kind [exe|lib|py-cffi]</code></td>
+<td><code>-k, --output-kind [exe|testlib|py-cffi]</code></td>
 <td>Output kind</td>
 <td>No</td>
 <td><code>exe</code></td>
@@ -1600,6 +1654,12 @@
 <tr>
 <td><code>--full-fqn</code></td>
 <td>Show full FQNs in redshifted modules</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--full-ast</code></td>
+<td>Show full AST node types (e.g., LocalDirect, OuterCell)</td>
 <td>No</td>
 <td><code>False</code></td>
 </tr>
@@ -1747,10 +1807,10 @@
 </tr>
 </tbody>
 </table>
-<h3 id="parse">parse<a class="headerlink" href="#parse" title="Permanent link">&para;</a></h3>
-<p>Dump the SPy AST</p>
+<h3 id="astcompile">astcompile<a class="headerlink" href="#astcompile" title="Permanent link">&para;</a></h3>
+<p>Dump the astcompiled SPy AST</p>
 <h4 id="usage_5">Usage<a class="headerlink" href="#usage_5" title="Permanent link">&para;</a></h4>
-<p><code>spy parse [OPTIONS] FILENAME</code></p>
+<p><code>spy astcompile [OPTIONS] FILENAME</code></p>
 <h4 id="arguments_5">Arguments<a class="headerlink" href="#arguments_5" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1769,6 +1829,94 @@
 </tbody>
 </table>
 <h4 id="options_5">Options<a class="headerlink" href="#options_5" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--format, -f [ast|spy|html]</code></td>
+<td>Output format (ast, spy [source], or html)</td>
+<td>No</td>
+<td><code>ast</code></td>
+</tr>
+<tr>
+<td><code>--full-ast</code></td>
+<td>Show full AST node types (e.g., LocalDirect, OuterCell)</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--spyast-js [cdn|inline]</code></td>
+<td>How to include spyast.js in the HTML output</td>
+<td>No</td>
+<td><code>inline</code></td>
+</tr>
+<tr>
+<td><code>--pdb</code></td>
+<td>Enter interp-level debugger in case of error</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--spdb</code></td>
+<td>Enter app-level debugger in case of error</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>-E, --error-mode [eager|lazy|warn]</code></td>
+<td>Handling strategy for static errors</td>
+<td>No</td>
+<td><code>eager</code></td>
+</tr>
+<tr>
+<td><code>--no-spyc</code></td>
+<td>Disable loading/saving of .spyc cache files</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--extra-vm-module TEXT</code></td>
+<td>Path to an out-of-tree builtin module to load (additive with spy.toml)</td>
+<td>No</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>--no-spy-toml</code></td>
+<td>Ignore spy.toml project manifest</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="parse">parse<a class="headerlink" href="#parse" title="Permanent link">&para;</a></h3>
+<p>Dump the SPy AST</p>
+<h4 id="usage_6">Usage<a class="headerlink" href="#usage_6" title="Permanent link">&para;</a></h4>
+<p><code>spy parse [OPTIONS] FILENAME</code></p>
+<h4 id="arguments_6">Arguments<a class="headerlink" href="#arguments_6" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FILENAME</code></td>
+<td>File to operate on</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h4 id="options_6">Options<a class="headerlink" href="#options_6" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -1831,78 +1979,8 @@
 </table>
 <h3 id="pyparse">pyparse<a class="headerlink" href="#pyparse" title="Permanent link">&para;</a></h3>
 <p>Dump the Python AST</p>
-<h4 id="usage_6">Usage<a class="headerlink" href="#usage_6" title="Permanent link">&para;</a></h4>
-<p><code>spy pyparse [OPTIONS] FILENAME</code></p>
-<h4 id="arguments_6">Arguments<a class="headerlink" href="#arguments_6" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>FILENAME</code></td>
-<td>File to operate on</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
-<h4 id="options_6">Options<a class="headerlink" href="#options_6" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--pdb</code></td>
-<td>Enter interp-level debugger in case of error</td>
-<td>No</td>
-<td><code>False</code></td>
-</tr>
-<tr>
-<td><code>--spdb</code></td>
-<td>Enter app-level debugger in case of error</td>
-<td>No</td>
-<td><code>False</code></td>
-</tr>
-<tr>
-<td><code>-E, --error-mode [eager|lazy|warn]</code></td>
-<td>Handling strategy for static errors</td>
-<td>No</td>
-<td><code>eager</code></td>
-</tr>
-<tr>
-<td><code>--no-spyc</code></td>
-<td>Disable loading/saving of .spyc cache files</td>
-<td>No</td>
-<td><code>False</code></td>
-</tr>
-<tr>
-<td><code>--extra-vm-module TEXT</code></td>
-<td>Path to an out-of-tree builtin module to load (additive with spy.toml)</td>
-<td>No</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>--no-spy-toml</code></td>
-<td>Ignore spy.toml project manifest</td>
-<td>No</td>
-<td><code>False</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="imports">imports<a class="headerlink" href="#imports" title="Permanent link">&para;</a></h3>
-<p>Dump the (recursive) list of imports</p>
 <h4 id="usage_7">Usage<a class="headerlink" href="#usage_7" title="Permanent link">&para;</a></h4>
-<p><code>spy imports [OPTIONS] FILENAME</code></p>
+<p><code>spy pyparse [OPTIONS] FILENAME</code></p>
 <h4 id="arguments_7">Arguments<a class="headerlink" href="#arguments_7" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1969,10 +2047,10 @@
 </tr>
 </tbody>
 </table>
-<h3 id="symtable">symtable<a class="headerlink" href="#symtable" title="Permanent link">&para;</a></h3>
-<p>Dump the symtables</p>
+<h3 id="imports">imports<a class="headerlink" href="#imports" title="Permanent link">&para;</a></h3>
+<p>Dump the (recursive) list of imports</p>
 <h4 id="usage_8">Usage<a class="headerlink" href="#usage_8" title="Permanent link">&para;</a></h4>
-<p><code>spy symtable [OPTIONS] FILENAME</code></p>
+<p><code>spy imports [OPTIONS] FILENAME</code></p>
 <h4 id="arguments_8">Arguments<a class="headerlink" href="#arguments_8" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -2039,10 +2117,10 @@
 </tr>
 </tbody>
 </table>
-<h3 id="cleanup">cleanup<a class="headerlink" href="#cleanup" title="Permanent link">&para;</a></h3>
-<p>Remove .spyc cache files</p>
+<h3 id="scopes">scopes<a class="headerlink" href="#scopes" title="Permanent link">&para;</a></h3>
+<p>Dump the lexical scopes and frame infos</p>
 <h4 id="usage_9">Usage<a class="headerlink" href="#usage_9" title="Permanent link">&para;</a></h4>
-<p><code>spy cleanup [OPTIONS] [PATH]</code></p>
+<p><code>spy scopes [OPTIONS] FILENAME</code></p>
 <h4 id="arguments_9">Arguments<a class="headerlink" href="#arguments_9" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -2054,9 +2132,9 @@
 </thead>
 <tbody>
 <tr>
-<td><code>PATH</code></td>
-<td></td>
-<td>No</td>
+<td><code>FILENAME</code></td>
+<td>File to operate on</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
@@ -2109,11 +2187,81 @@
 </tr>
 </tbody>
 </table>
+<h3 id="cleanup">cleanup<a class="headerlink" href="#cleanup" title="Permanent link">&para;</a></h3>
+<p>Remove .spyc cache files</p>
+<h4 id="usage_10">Usage<a class="headerlink" href="#usage_10" title="Permanent link">&para;</a></h4>
+<p><code>spy cleanup [OPTIONS] [PATH]</code></p>
+<h4 id="arguments_10">Arguments<a class="headerlink" href="#arguments_10" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PATH</code></td>
+<td></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h4 id="options_10">Options<a class="headerlink" href="#options_10" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--pdb</code></td>
+<td>Enter interp-level debugger in case of error</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--spdb</code></td>
+<td>Enter app-level debugger in case of error</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>-E, --error-mode [eager|lazy|warn]</code></td>
+<td>Handling strategy for static errors</td>
+<td>No</td>
+<td><code>eager</code></td>
+</tr>
+<tr>
+<td><code>--no-spyc</code></td>
+<td>Disable loading/saving of .spyc cache files</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--extra-vm-module TEXT</code></td>
+<td>Path to an out-of-tree builtin module to load (additive with spy.toml)</td>
+<td>No</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>--no-spy-toml</code></td>
+<td>Ignore spy.toml project manifest</td>
+<td>No</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="format">format<a class="headerlink" href="#format" title="Permanent link">&para;</a></h3>
 <p>Format SPy file</p>
-<h4 id="usage_10">Usage<a class="headerlink" href="#usage_10" title="Permanent link">&para;</a></h4>
+<h4 id="usage_11">Usage<a class="headerlink" href="#usage_11" title="Permanent link">&para;</a></h4>
 <p><code>spy format [OPTIONS] FILENAME</code></p>
-<h4 id="arguments_10">Arguments<a class="headerlink" href="#arguments_10" title="Permanent link">&para;</a></h4>
+<h4 id="arguments_11">Arguments<a class="headerlink" href="#arguments_11" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -2130,7 +2278,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="options_10">Options<a class="headerlink" href="#options_10" title="Permanent link">&para;</a></h4>
+<h4 id="options_11">Options<a class="headerlink" href="#options_11" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
