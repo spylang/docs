@@ -1268,7 +1268,7 @@ Try them in the <a href="https://spylang.github.io/spy">online playground</a>.</
 </ul>
 <p>Note: <code>redshift --linearize</code> "linearises" the <code>__block__</code>, which can give
 simpler output for the print calls with more than one argument.</p>
-<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/bluefunc_pi.spy</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@blue</span>
+<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/bluefunc_pi.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=2_metaprogramming/bluefunc_pi.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@blue</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_pi</span><span class="p">():</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="sd">    Compute an approximation of PI using the Leibniz series</span>
@@ -1317,7 +1317,7 @@ simpler output for the print calls with more than one argument.</p>
 <p>Redshift inserts type conversions.</p>
 </li>
 </ul>
-<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/bluefunc_adder.spy</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">make_adder</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">x</span><span class="p">](</span><span class="n">y</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/bluefunc_adder.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=2_metaprogramming/bluefunc_adder.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">make_adder</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">x</span><span class="p">](</span><span class="n">y</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
@@ -1346,7 +1346,7 @@ simpler output for the print calls with more than one argument.</p>
 <p><code>add2</code> shows the explicit desugaring — both forms are equivalent.</p>
 </li>
 </ul>
-<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/blue_generic.spy</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">[</span><span class="n">T</span><span class="p">](</span><span class="n">x</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/blue_generic.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=2_metaprogramming/blue_generic.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">[</span><span class="n">T</span><span class="p">](</span><span class="n">x</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
@@ -1389,7 +1389,7 @@ simpler output for the print calls with more than one argument.</p>
 </li>
 <li>Blue decorator functions do not need type annotations.</li>
 </ul>
-<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/deco.spy</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nd">@blue</span>
+<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/deco.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=2_metaprogramming/deco.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nd">@blue</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">i32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">i32</span><span class="p">:</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>        <span class="n">res</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1449,7 +1449,7 @@ simpler output for the print calls with more than one argument.</p>
 </li>
 <li><code>OpSpec.NULL</code>: signals that this case is not handled</li>
 </ul>
-<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/metafunc.spy</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpSpec</span>
+<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/metafunc.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=2_metaprogramming/metafunc.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpSpec</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nd">@blue</span><span class="o">.</span><span class="n">metafunc</span>
@@ -1503,7 +1503,7 @@ simpler output for the print calls with more than one argument.</p>
     time — uncomment the last lines to see the errors.</p>
 </li>
 </ul>
-<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/metafunc_variadic.spy</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpSpec</span>
+<div class="language-python highlight"><span class="filename">examples/2_metaprogramming/metafunc_variadic.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=2_metaprogramming/metafunc_variadic.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpSpec</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nd">@blue</span><span class="o">.</span><span class="n">metafunc</span>

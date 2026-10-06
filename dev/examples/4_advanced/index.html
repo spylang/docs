@@ -1296,7 +1296,7 @@ Try them in the <a href="https://spylang.github.io/spy">online playground</a>.</
 <li>Structs are passed by value (copied); for reference semantics, use a gc_ptr
     (see myarray.spy).</li>
 </ul>
-<div class="language-python highlight"><span class="filename">examples/4_advanced/generic_types.spy</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@struct</span>
+<div class="language-python highlight"><span class="filename">examples/4_advanced/generic_types.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=4_advanced/generic_types.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@struct</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">Pair</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">first</span><span class="p">:</span> <span class="n">T</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">second</span><span class="p">:</span> <span class="n">T</span>
@@ -1385,7 +1385,7 @@ introduced in the previous examples.</p>
 <p><code>ptr_setbytes</code> and <code>ptr_copy</code> are used for efficient bulk memory operations.</p>
 </li>
 </ul>
-<div class="language-python highlight"><span class="filename">examples/4_advanced/myarray.spy</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">unsafe</span><span class="w"> </span><span class="kn">import</span> <span class="n">gc_alloc</span><span class="p">,</span> <span class="n">gc_ptr</span><span class="p">,</span> <span class="n">ptr_setbytes</span><span class="p">,</span> <span class="n">ptr_copy</span>
+<div class="language-python highlight"><span class="filename">examples/4_advanced/myarray.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=4_advanced/myarray.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">unsafe</span><span class="w"> </span><span class="kn">import</span> <span class="n">gc_alloc</span><span class="p">,</span> <span class="n">gc_ptr</span><span class="p">,</span> <span class="n">ptr_setbytes</span><span class="p">,</span> <span class="n">ptr_copy</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Remember that these generic types are just @blue.generic type factories</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># parametrized with DTYPE.</span>
@@ -1484,7 +1484,7 @@ introduced in the previous examples.</p>
     without any built-in support.</p>
 </li>
 </ul>
-<div class="language-python highlight"><span class="filename">examples/4_advanced/convert.spy</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpSpec</span>
+<div class="language-python highlight"><span class="filename">examples/4_advanced/convert.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=4_advanced/convert.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpSpec</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nd">@struct</span>
@@ -1564,7 +1564,7 @@ is a <code>blue.metafunc</code>, so it runs at redshift time and can specialize 
 <p>with no loop, no type dispatch and no boxing left at runtime.</p>
 <p>Run <code>spy redshift examples/4_advanced/mytuple_contains.spy</code> to see the
 generated code.</p>
-<div class="language-python highlight"><span class="filename">examples/4_advanced/mytuple_contains.spy</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpSpec</span>
+<div class="language-python highlight"><span class="filename">examples/4_advanced/mytuple_contains.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=4_advanced/mytuple_contains.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpSpec</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nd">@blue</span><span class="o">.</span><span class="n">generic</span>
@@ -1659,7 +1659,7 @@ generated code.</p>
 </li>
 <li>This is useful for debugging, error messages, and metaprogramming.</li>
 </ul>
-<div class="language-python highlight"><span class="filename">examples/4_advanced/type_name_and_fqn.spy</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nd">@struct</span>
+<div class="language-python highlight"><span class="filename">examples/4_advanced/type_name_and_fqn.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=4_advanced/type_name_and_fqn.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nd">@struct</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">Foo</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="k">pass</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
@@ -1685,7 +1685,7 @@ generated code.</p>
 <li>This pattern shows how SPy can implement PEP 593-style annotations as a library,
     without any built-in support.</li>
 </ul>
-<div class="language-python highlight"><span class="filename">examples/4_advanced/annotated.spy</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpSpec</span>
+<div class="language-python highlight"><span class="filename">examples/4_advanced/annotated.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=4_advanced/annotated.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpSpec</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__spy__</span><span class="w"> </span><span class="kn">import</span> <span class="n">interp_tuple</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
@@ -1782,7 +1782,7 @@ underline the important part, i.e. the two nested <code>while</code> loops:</p>
 </span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>            [...]
 </span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>            `unroll_nested_loops::print_idx`(idx$0$0$0)
 </span></code></pre></div>
-<div class="language-python highlight"><span class="filename">examples/4_advanced/unroll_nested_loops.spy</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__spy__</span><span class="w"> </span><span class="kn">import</span> <span class="n">force_inline</span>
+<div class="language-python highlight"><span class="filename">examples/4_advanced/unroll_nested_loops.spy <span style='float: right;'><a href='https://spylang.github.io/spy/#file=4_advanced/unroll_nested_loops.spy' style='color: #F5A700;'>▶ Open in the playground</a></span></span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__spy__</span><span class="w"> </span><span class="kn">import</span> <span class="n">force_inline</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">SHAPE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
