@@ -1541,6 +1541,28 @@ the interpreter, exactly as you would run a Python script:</p>
 <div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="gp">$ </span>spy<span class="w"> </span>examples/hello.spy
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="go">Hello world!</span>
 </span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Interpreter performance</p>
+<p>The interpreter is itself written in Python, so it is currently very slow:
+every operation of your program is executed by Python. It is meant for
+quick experiments, for testing and for debugging. It will become at least as
+fast as Python thanks to two improvements: compiling the interpreter itself
+(self-hosting) and precompiling the standard library.</p>
+<p>The speed of SPy comes from compilation, which is the subject of the next
+section.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Debugging</p>
+<p>The interpreter is also what runs your program under the debugger. If an error
+occurs, two options of the <code>spy</code> command start a post-mortem session:</p>
+<ul>
+<li><code>--spdb</code> opens <code>spdb</code>, the debugger for SPy code: you inspect your SPy
+    program (its functions and variables).</li>
+<li><code>--pdb</code> opens the standard Python debugger on the interpreter itself. It
+    is useful to debug SPy, not your own program.</li>
+</ul>
+<p>For example: <code>spy --spdb my_program.spy</code>.</p>
+</div>
 <h2 id="build-an-executable">Build an executable<a class="headerlink" href="#build-an-executable" title="Permanent link">&para;</a></h2>
 <div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gp">$ </span>spy<span class="w"> </span>build<span class="w"> </span>examples/hello.spy
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="go">[debug] examples/build/hello</span>
@@ -1571,22 +1593,67 @@ index silently reads or writes the wrong memory.</p>
 <p>The performance difference between the two modes is huge. Use the debug build
 while developing, and the release build for benchmarks and final executables.</p>
 </div>
+<div class="admonition">
+<p class="admonition-title">Three levels of compromise</p>
+<p>Together with the interpreter, the two build modes give three ways to run a
+program, with different trade-offs between usability, safety and performance:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Usability</th>
+<th>Safety</th>
+<th>Performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>interpreter</td>
+<td>no build step, debugger</td>
+<td>checks</td>
+<td>very slow today, later fast compared to Python</td>
+</tr>
+<tr>
+<td>compiled, debug</td>
+<td>build step</td>
+<td>checks</td>
+<td>fast</td>
+</tr>
+<tr>
+<td>compiled, release</td>
+<td>build step, slowest build</td>
+<td>no checks</td>
+<td>fastest</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><code>--target</code> also accepts <code>wasi</code> and <code>emscripten</code> to produce WebAssembly. <code>wasi</code>
 works out of the box, but <code>emscripten</code> needs the
 <a href="https://github.com/emscripten-core/emsdk">Emscripten SDK</a> (<code>emcc</code>), see the
 <a href="../../contributing/#development-setup">development setup</a>.</p>
+<p>For example, to build the hello world example for WASI:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="gp">$ </span>spy<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>wasi<span class="w"> </span>--release<span class="w"> </span>examples/1_high_level/hello.spy
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="go">[release] examples/1_high_level/build/hello.wasm</span>
+</span></code></pre></div>
+<p>The result is a <code>.wasm</code> file, which needs a WebAssembly runtime to be executed.
+<a href="https://wasmtime.dev/">Wasmtime</a> is one possible choice (see its
+<a href="https://docs.wasmtime.dev/cli-install.html">installation instructions</a>).</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="gp">$ </span>wasmtime<span class="w"> </span>run<span class="w"> </span>examples/1_high_level/build/hello.wasm
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">Hello world!</span>
+</span></code></pre></div>
 <h2 id="see-what-the-compiler-does">See what the compiler does<a class="headerlink" href="#see-what-the-compiler-does" title="Permanent link">&para;</a></h2>
 <p>Before generating code, the compiler <em>redshifts</em> the program: it runs all the
 parts that can be computed ahead of time and keeps only what must happen at
 run time. Ask for the result with <code>spy redshift</code>:</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="gp">$ </span>spy<span class="w"> </span>redshift<span class="w"> </span>examples/hello.spy
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="go">def main() -&gt; None:</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="go">    `_print::println[str]`(&#39;Hello world!&#39;)</span>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="gp">$ </span>spy<span class="w"> </span>redshift<span class="w"> </span>examples/hello.spy
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="go">def main() -&gt; None:</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="go">    `_print::println[str]`(&#39;Hello world!&#39;)</span>
 </span></code></pre></div>
 <p>The call to <code>print</code> has been resolved to a specialized, statically known
 function, <code>println[str]</code>. Use <code>-x</code> to also execute the redshifted program:</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="gp">$ </span>spy<span class="w"> </span>redshift<span class="w"> </span>-x<span class="w"> </span>examples/hello.spy
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">Hello world!</span>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="gp">$ </span>spy<span class="w"> </span>redshift<span class="w"> </span>-x<span class="w"> </span>examples/hello.spy
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="go">Hello world!</span>
 </span></code></pre></div>
 <p>The other compilation phases (see
 <a href="../../explanation/compilation-pipeline/">The compilation pipeline</a>) can be
