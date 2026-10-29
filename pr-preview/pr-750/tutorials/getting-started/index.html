@@ -1543,8 +1543,9 @@ the interpreter, exactly as you would run a Python script:</p>
 </span></code></pre></div>
 <h2 id="build-an-executable">Build an executable<a class="headerlink" href="#build-an-executable" title="Permanent link">&para;</a></h2>
 <div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gp">$ </span>spy<span class="w"> </span>build<span class="w"> </span>examples/hello.spy
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="gp">$ </span>./examples/build/hello
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="go">Hello world!</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="go">[debug] examples/build/hello</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="gp">$ </span>./examples/build/hello
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="go">Hello world!</span>
 </span></code></pre></div>
 <p>The default target is <code>native</code>: <code>spy build examples/hello.spy</code> is the same as
 <code>spy build --target native examples/hello.spy</code>. It only needs a C compiler.</p>
@@ -1552,13 +1553,24 @@ the interpreter, exactly as you would run a Python script:</p>
 <ul>
 <li><code>--release</code> builds an optimized executable (<code>-O3</code>, link-time optimization)
     without the debug checks. Without it, you get a debug build (<code>-O0 -g</code>),
-    which is faster to compile. The command prints <code>[debug]</code> or <code>[release]</code> to
-    tell you which one you got.</li>
+    which is faster to compile.</li>
 <li><code>--static</code> produces a statically linked executable, which does not depend
     on shared libraries (native target only, not supported on macOS).</li>
 </ul>
 <div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="gp">$ </span>spy<span class="w"> </span>build<span class="w"> </span>--release<span class="w"> </span>--static<span class="w"> </span>examples/hello.spy
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">[release] examples/build/hello</span>
 </span></code></pre></div>
+<div class="admonition">
+<p class="admonition-title">Debug and release modes</p>
+<p>The two modes differ in more than compiler flags. In debug mode, a pointer
+also stores the length of the memory it points to (such a pointer is often
+called a <em>fat pointer</em>). This lets every indexing operation check that the
+index is in range, and raise an <code>IndexError</code> if it is not. In release mode,
+pointers are plain addresses and these checks are removed: an out-of-range
+index silently reads or writes the wrong memory.</p>
+<p>The performance difference between the two modes is huge. Use the debug build
+while developing, and the release build for benchmarks and final executables.</p>
+</div>
 <p><code>--target</code> also accepts <code>wasi</code> and <code>emscripten</code> to produce WebAssembly. <code>wasi</code>
 works out of the box, but <code>emscripten</code> needs the
 <a href="https://github.com/emscripten-core/emsdk">Emscripten SDK</a> (<code>emcc</code>), see the
