@@ -514,10 +514,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#see-what-the-compiler-does" class="md-nav__link">
+  <a href="#build-an-executable" class="md-nav__link">
     <span class="md-ellipsis">
       
-        See what the compiler does
+        Build an executable
       
     </span>
   </a>
@@ -525,10 +525,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#build-an-executable" class="md-nav__link">
+  <a href="#see-what-the-compiler-does" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Build an executable
+        See what the compiler does
       
     </span>
   </a>
@@ -1452,10 +1452,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#see-what-the-compiler-does" class="md-nav__link">
+  <a href="#build-an-executable" class="md-nav__link">
     <span class="md-ellipsis">
       
-        See what the compiler does
+        Build an executable
       
     </span>
   </a>
@@ -1463,10 +1463,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#build-an-executable" class="md-nav__link">
+  <a href="#see-what-the-compiler-does" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Build an executable
+        See what the compiler does
       
     </span>
   </a>
@@ -1506,11 +1506,12 @@
 
 <h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
 <p>In this tutorial you install SPy, run your first program in the interpreter,
-look at what the compiler does to it, and build a native executable.</p>
+build a native executable, and look at what the compiler does to your program.</p>
 <div class="admonition note">
 <p class="admonition-title">Installation status</p>
 <p>At the moment, the only supported way to install SPy is an editable install of
-a Git checkout.</p>
+a Git checkout. Installing with <code>uv tool install spylang --prerelease allow</code>
+will soon be supported.</p>
 </div>
 <h2 id="install-spy">Install SPy<a class="headerlink" href="#install-spy" title="Permanent link">&para;</a></h2>
 <p>You need <a href="https://docs.astral.sh/uv/">uv</a>, a C compiler (e.g. <code>build-essential</code>
@@ -1524,6 +1525,10 @@ collector (<code>libgc-dev</code> on Debian/Ubuntu, <code>brew install bdw-gc</c
 </span></code></pre></div>
 <p><code>make -C spy/libspy</code> builds <code>libspy</code>, the small C runtime library that every
 SPy program is linked against.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>make -C spy/libspy</code> step will soon not be needed anymore.</p>
+</div>
 <p>For the other installation methods (pip, Pixi) and the optional build
 dependencies, see the <a href="../../contributing/#development-setup">development setup</a>.</p>
 <h2 id="run-a-program-in-the-interpreter">Run a program in the interpreter<a class="headerlink" href="#run-a-program-in-the-interpreter" title="Permanent link">&para;</a></h2>
@@ -1536,27 +1541,45 @@ the interpreter, exactly as you would run a Python script:</p>
 <div class="language-console highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="gp">$ </span>spy<span class="w"> </span>examples/hello.spy
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="go">Hello world!</span>
 </span></code></pre></div>
+<h2 id="build-an-executable">Build an executable<a class="headerlink" href="#build-an-executable" title="Permanent link">&para;</a></h2>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gp">$ </span>spy<span class="w"> </span>build<span class="w"> </span>examples/hello.spy
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="gp">$ </span>./examples/build/hello
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="go">Hello world!</span>
+</span></code></pre></div>
+<p>The default target is <code>native</code>: <code>spy build examples/hello.spy</code> is the same as
+<code>spy build --target native examples/hello.spy</code>. It only needs a C compiler.</p>
+<p>Two options are worth knowing from the start:</p>
+<ul>
+<li><code>--release</code> builds an optimized executable (<code>-O3</code>, link-time optimization)
+    without the debug checks. Without it, you get a debug build (<code>-O0 -g</code>),
+    which is faster to compile. The command prints <code>[debug]</code> or <code>[release]</code> to
+    tell you which one you got.</li>
+<li><code>--static</code> produces a statically linked executable, which does not depend
+    on shared libraries (native target only, not supported on macOS).</li>
+</ul>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="gp">$ </span>spy<span class="w"> </span>build<span class="w"> </span>--release<span class="w"> </span>--static<span class="w"> </span>examples/hello.spy
+</span></code></pre></div>
+<p><code>--target</code> also accepts <code>wasi</code> and <code>emscripten</code> to produce WebAssembly. <code>wasi</code>
+works out of the box, but <code>emscripten</code> needs the
+<a href="https://github.com/emscripten-core/emsdk">Emscripten SDK</a> (<code>emcc</code>), see the
+<a href="../../contributing/#development-setup">development setup</a>.</p>
 <h2 id="see-what-the-compiler-does">See what the compiler does<a class="headerlink" href="#see-what-the-compiler-does" title="Permanent link">&para;</a></h2>
 <p>Before generating code, the compiler <em>redshifts</em> the program: it runs all the
 parts that can be computed ahead of time and keeps only what must happen at
 run time. Ask for the result with <code>spy redshift</code>:</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gp">$ </span>spy<span class="w"> </span>redshift<span class="w"> </span>examples/hello.spy
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="go">def main() -&gt; None:</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="go">    `_print::println[str]`(&#39;Hello world!&#39;)</span>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="gp">$ </span>spy<span class="w"> </span>redshift<span class="w"> </span>examples/hello.spy
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="go">def main() -&gt; None:</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="go">    `_print::println[str]`(&#39;Hello world!&#39;)</span>
 </span></code></pre></div>
 <p>The call to <code>print</code> has been resolved to a specialized, statically known
 function, <code>println[str]</code>. Use <code>-x</code> to also execute the redshifted program:</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="gp">$ </span>spy<span class="w"> </span>redshift<span class="w"> </span>-x<span class="w"> </span>examples/hello.spy
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">Hello world!</span>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="gp">$ </span>spy<span class="w"> </span>redshift<span class="w"> </span>-x<span class="w"> </span>examples/hello.spy
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">Hello world!</span>
 </span></code></pre></div>
-<h2 id="build-an-executable">Build an executable<a class="headerlink" href="#build-an-executable" title="Permanent link">&para;</a></h2>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="gp">$ </span>spy<span class="w"> </span>build<span class="w"> </span>examples/hello.spy<span class="w"> </span>--target<span class="w"> </span>native
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="gp">$ </span>./examples/build/hello
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="go">Hello world!</span>
-</span></code></pre></div>
-<p><code>--target</code> also accepts <code>wasi</code> and <code>emscripten</code> to produce WebAssembly. These
-targets have extra requirements, listed in the
-<a href="../../contributing/#development-setup">development setup</a>.</p>
+<p>The other compilation phases (see
+<a href="../../explanation/compilation-pipeline/">The compilation pipeline</a>) can be
+inspected the same way, with commands like <code>spy parse</code>, <code>spy scopes</code> or
+<code>spy build --no-compile</code>.</p>
 <h2 id="where-next">Where next?<a class="headerlink" href="#where-next" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Browse the <a href="../../examples/1_high_level/">examples</a>: they go from
